@@ -73,7 +73,7 @@ body {
     line-height: 1.6;
     color: #212529;
     text-align: left;
-    background-color: #cccccc;
+    background-color: #F4F4F4;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -171,14 +171,14 @@ sup {
 }
 
 a {
-    color: #3490dc;
+    color: #7F4AB2;
     text-decoration: none;
     background-color: transparent;
 }
 
 a:hover {
-    color: #1d68a7;
-    text-decoration: underline;
+    color: #7f0ded;
+    text-decoration: unset;
 }
 
 a:not([href]):not([class]) {
@@ -247,8 +247,8 @@ button {
 }
 
 button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+    outline: 0px dotted;
+    outline: 0px auto -webkit-focus-ring-color;
 }
 
 input,
@@ -1595,7 +1595,7 @@ pre code {
 .table td {
     padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e654;
 }
 
 .table thead th {
@@ -1937,9 +1937,9 @@ pre code {
     font-weight: 400;
     line-height: 1.6;
     color: #495057;
-    background-color: #fff;
+    background-color: #F4F4F4;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 0px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2072,6 +2072,7 @@ select.form-control[multiple] {
 }
 
 textarea.form-control {
+    min-height: 250px;
     height: auto;
 }
 
@@ -5997,8 +5998,9 @@ a.close.disabled {
     pointer-events: auto;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 0px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
+    box-shadow: 0px 3px 10px #00000029;
     outline: 0;
 }
 
@@ -6071,8 +6073,8 @@ a.close.disabled {
 
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 500px;
-        margin: 1.75rem auto;
+        max-width: 700px;
+        margin: 5.75rem auto;
     }
     .modal-dialog-scrollable {
         max-height: calc(100% - 3.5rem);

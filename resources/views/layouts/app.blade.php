@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    ECOC Forum
+                    <img src="{{ asset('img/logo.svg') }}" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4 mt-5">
             @yield('content')
         </main>
         <div class="footer" style="display: none">

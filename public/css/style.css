@@ -1,5 +1,5 @@
 .navbar {
-    background: linear-gradient(0deg, rgba(37, 20, 48, 1) 3%, rgb(105 56 136) 6%, rgb(63 21 90) 94%, rgba(37, 20, 48, 1) 99%);
+    background-color: #6E27B1;
 }
 
 .navbar .nav-link {
@@ -7,14 +7,30 @@
     font-weight: bold;
 }
 
-.newpost {
-    background: linear-gradient(306deg, rgb(113 32 166) 5%, rgb(150 44 221) 81%);
+.div_headname {
+    position: relative;
+    display: inline;
+    color: #7F4AB2;
+    font-size: 20px;
     font-weight: bold;
-    color: #ffffff;
 }
 
-.newpost:hover {
-    background: linear-gradient(306deg, rgb(150 67 205) 5%, rgb(150 44 221) 81%);
+.div_newpost {
+    float: right;
+    position: relative;
+    display: inline;
+}
+
+.div_newpost .newpost {
+    background-color: #6E27B1;
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 5px 15px 5px 5px;
+    border: 0px;
+}
+
+.div_newpost .newpost:hover {
+    background-color: #6e27b1e3;
 }
 
 .forum_name {
@@ -24,17 +40,21 @@
 
 .forum_sub_title {
     font-size: 14px;
+    font-weight: 100;
+    color: #919191;
 }
 
 .forum_sub_head_detail {
     font-size: 25px;
+    color: #7F4AB2;
 }
 
 .forum_sub_date_detail {
+    padding-bottom: 7px;
     margin-top: -5px;
     color: #999999;
     font-size: 12px;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc5c;
 }
 
 .forum_sub_title_detail {
@@ -63,10 +83,11 @@
     position: absolute;
     padding: 15px 30px 15px 15px;
     text-align: right;
-    background-color: #dfdfdfe6;
+    background-color: #F7F6FF;
     right: 43px;
     bottom: -29px;
-    border-radius: 3px;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 32px;
 }
 
 .reply_comment .reply {
@@ -74,8 +95,11 @@
     position: relative;
     padding: 7px 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 3px;
+    color: #7F4AB2;
+    font-weight: bold;
+    border-left: 1px solid #cccccc;
 }
 
 .reply_comment .reply:hover {
@@ -87,7 +111,8 @@
     position: relative;
     padding: 0 5px;
     font-size: 15px;
-    color: #8b8585;
+    color: #7F4AB2;
+    font-weight: bold;
 }
 
 .reply_comment_post {
@@ -103,6 +128,8 @@
     cursor: pointer;
     font-size: 15px;
     border-radius: 3px;
+    color: #7F4AB2;
+    font-weight: bold;
 }
 
 .reply_comment_post .reply:hover {
@@ -115,6 +142,7 @@
     padding: 0 5px;
     font-size: 15px;
     color: #8b8585;
+    opacity: 0.5;
 }
 
 .footer {
@@ -137,12 +165,13 @@
 /************************ bg-color ***************/
 
 .border-head {
-    border-top: 2px solid #ffffff6e;
+    border-top: 0px solid #ffffff6e;
 }
 
 .profile {
     position: relative;
     align-items: center;
+    padding: 10px 49px;
 }
 
 .profile img {
@@ -159,4 +188,50 @@
     font-weight: bold;
     position: relative;
     display: inline;
+    color: #7F4AB2;
+}
+
+.showpost {
+    box-shadow: 0px 3px 10px #00000029;
+    border-radius: 3px;
+}
+
+th {
+    color: #7F4AB2;
+    text-transform: capitalize;
+    font-weight: 100;
+    background-color: #F7F7F7;
+}
+
+td {
+    color: #7F4AB2;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.modal-title {
+    color: #7F4AB2;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.col-form-label {
+    color: #7F4AB2;
+    font-weight: bold;
+}
+
+.btn-createpost {
+    color: #fff;
+    background-color: #6E27B1;
+    border-color: #6E27B1;
+    border-radius: 30px;
+    padding: 5px 25px;
+}
+
+.btn-cencelpost {
+    color: #000;
+    background-color: #6e27b100;
+    border-color: #6E27B1;
+    border-radius: 30px;
+    padding: 5px 25px;
 }

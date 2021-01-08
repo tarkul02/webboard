@@ -24,6 +24,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/home/create', [App\Http\Controllers\HomeController::class, 'create'])->name('home');
-
-Route::get('/home/{id}', [App\Http\Controllers\PostsController::class, 'index'])->name('detail');
+Route::get('/home/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');

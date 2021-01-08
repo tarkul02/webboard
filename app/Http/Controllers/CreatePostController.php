@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class CreatePostController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $post = \DB::table('posts')->where('id', $id)->first();
-        return view('/detail', ['posts' => $post]);
+        return view('home');
     }
 
     /**
@@ -24,7 +23,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -46,11 +45,10 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-       
-
+        //
     }
 
-    /**id
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
