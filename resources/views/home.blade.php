@@ -7,7 +7,7 @@
         <div class="col-md-12 mb-3 pl-4 pr-3 mt-4" >
           <div class="div_headname">ECOCForum</div>
           <div class="div_newpost">
-            <button type="button" class="newpost" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+            <button type="button" class="newpost" data-toggle="modal"  data-whatever="@mdo" onclick="createpost()">
               <img src="{{ asset('img/createpost.svg') }}" alt="">
             NEW POST
             </button>
@@ -41,8 +41,9 @@
         </tbody>
       </table>
     </div>
-    <form action="{{url('create')}}" method="post">
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="{{url('/home')}}" method="post">
+      @csrf
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -52,16 +53,18 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>
                   <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">title:</label>
-                      <input type="text" class="form-control" id="title-name">
-                    </div>
+                    <label for="recipient-name" class="col-form-label">name:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Create Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">title:</label>
+                    <input type="text" class="form-control" name="title" placeholder="Create Title" required>
+                  </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Message:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
+                    <textarea class="form-control" name="detail" placeholder="Create Detail" required></textarea>
                   </div>
-                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-cencelpost" data-dismiss="modal">Cancel</button>
@@ -69,7 +72,24 @@
               </div>
             </div>
           </div>
-      </div>
+        </div>
     </form>
 </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+  $( document ).ready(function() {
+    // if("{{Auth::check()}}" == false)
+    // console.log("{{Auth::check()}}")
+  });
+
+  function createpost()
+    {
+      if("{{Auth::check()}}" == false){
+        window.location.href = "{{route('login')}}";
+    }else{
+        $('#exampleModal').modal();
+      }
+    }
+</script>
 @endsection

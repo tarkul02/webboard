@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,13 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+         $this->middleware('auth');
+    }
+
+    public function index() 
+    {
+        $posts = DB::select('SELECT * FROM posts');
+        return view('home', ['posts' => $posts]);
     }
 
     /**
@@ -22,19 +29,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function createpost(Request $request)
     {
-        $posts = DB::select('SELECT * FROM posts');
-        return view('home', ['posts' => $posts]);
-    }
+       
+        $user_id = Auth::user()->id;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() 
-    {
-        return view('/home');
+        DB::table('posts')->insert([
+            [
+                'users_id' => $user_id , 
+                'name' => $request->post('name') , 
+                'title' => $request->post('title') , 
+                'detail' => $request->post('title')
+            ],
+        ]);
+        return redirect()->route('home');
     }
 }
