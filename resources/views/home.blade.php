@@ -18,10 +18,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Topic</th>
-            <th scope="col">Repiles</th>
-            <th scope="col">Views</th>
-            <th scope="col">Post Date</th>
+            <th scope="col" style="width:65%">Topic</th>
+            <th scope="col" style="width:10%">Repiles</th>
+            <th scope="col" style="width:10%">Views</th>
+            <th scope="col" style="width:15%; text-align:right;">Post Date</th>
           </tr>
         </thead>
         <tbody>
@@ -30,18 +30,24 @@
               <td>
                 <div class="">
                   <div class="forum_name"><a href="/home/{{$item->id}}">{{ $item->name }}</a></div>
-                  <div class="forum_sub_title">{{ $item->title }}</div>
+                  <div class="forum_sub_title">{{ substr($item->title,0,120) }}</div>
                 </div>
               </td>
               <td>5</td>
               <td>50</td>
-              <td>{{$item->created_at}}</td>
+              <td style="text-align:right;">
+                @php
+                $cls_date = new DateTime($item->created_at);
+                $newdate = $cls_date->format('d-M-Y');
+                @endphp
+                {{  substr($newdate,0,15) }}  
+              </td>
             </tr>
           @endforeach
         </tbody>
       </table>
     </div>
-    <form action="{{url('/home')}}" method="post">
+    <form action="{{url('/home/post')}}" method="post">
       @csrf
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

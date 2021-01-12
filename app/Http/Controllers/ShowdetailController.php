@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Posts;
 class ShowdetailController extends Controller
 {
     /**
@@ -14,8 +15,11 @@ class ShowdetailController extends Controller
      */
     public function index($id)
     {
-        $post = DB::table('posts')->where('id', $id)->first();
-        return view('/detail', ['posts' => $post]);
+        $posts = Posts::where('id', $id)->first();
+        
+        // $comment = $posts->comment()->get();
+        // dd($comment[0]->user()->first()->name);
+        return view('/detail', ['posts' => $posts]);
     }
 
     /**
@@ -23,9 +27,21 @@ class ShowdetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   
+    public function createcomment(Request $request)
     {
-        return view('/home');
+       
+        $user_id = Auth::user()->id;
+        $id = $request->post('postid');
+
+        DB::table('comment')->insert([
+            [
+                'users_id' => $user_id , 
+                'post_id' => $request->post('postid'), 
+                'detail' => $request->post('comment')
+            ],
+        ]);
+        return redirect()->back();
     }
 
     /**

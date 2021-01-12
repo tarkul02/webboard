@@ -6,11 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\Posts;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany('App\Models\Posts');
+        return $this->hasMany(Posts::class, 'post_id','id');
     }
 
 }

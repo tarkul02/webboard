@@ -14,7 +14,15 @@
             </div>
             <div class="reply_comment">
                 <div class="view">
-                    30 Comment
+                    @php
+                        $totalcomment=0;
+                    @endphp
+                    @foreach ($posts->comment()->get() as $comment)
+                    @php
+                        $totalcomment++;
+                    @endphp
+                    @endforeach
+                    {{$totalcomment}}
                 </div>
                 <div class="reply" onclick="commentpost()">
                     Reply
@@ -24,29 +32,35 @@
         </div>
     </div>
     <div class="border-head mb-4"></div>
-    <div class="row justify-content-center mb-1 border-bottom">
-        <div class="col-md-12">
-            <div class="card mt-2">
-                <div class="profile mb-2">
-                   <img src="{{ asset('img/img_avatar.png') }}" alt="">
-                   <div class="profile_name"> Mr.test1</div>
-                </div>
-                <div class="pb-2 pl-5 pr-5">
-                    <p>After the successful  and addresses  pool loans available for lending. In each pool will have 100K EFG inside. The following are the names and addresses of the pool loans:After the successful launching of EFG dApp lending, we currently have 2 pool loans available for lending. In each pool will have 100K EFG inside. The following are the names and addresses of the pool loans:After the successful launching of EFG dApp lending, we currently have 2 pool loans available for lending. In each pool will have 100K EFG inside. The following are the names and addresses of the pool loans:After the successful launching of EFG dApp lending, we currently have 2 pool loans available for lending. In each pool will have 100K EFG inside. The following are the names and addresses of the pool loans:After the successful launching of EFG dApp lending, we currently have 2 pool loans available for lending. In each pool will have 100K EFG inside. The following are the names and addresses of the pool loans:</p>
-                </div>
-                <div class="reply_comment_post">
-                    <div class="view">
-                        Nov '20
+    @foreach ($posts->comment()->get() as $comment)
+        <div class="row justify-content-center mb-1 border-bottom">
+            <div class="col-md-12">
+                <div class="card mt-2">
+                    <div class="profile mb-2">
+                    <img src="{{ asset('img/img_avatar.png') }}" alt="">
+                    <div class="profile_name"> Mr.{{ $comment->user->name}}</div>
                     </div>
-                    <div class="reply">
-                        Reply
-                        <img src="{{ asset('img/reply.svg') }}" alt="">
+                    <div class="pb-2 pl-5 pr-5">
+                        <p>{{ $comment->detail}}</p>
+                    </div>
+                    <div class="reply_comment_post">
+                        <div class="view">
+                            @php
+                                $cls_date = new DateTime($comment->created_at);
+                                $newdate = $cls_date->format('d-M-Y');
+                            @endphp
+                            {{  substr($newdate,0,15) }}
+                        </div>
+                        <div class="reply" onclick="commentpost()">
+                            Reply
+                            <img src="{{ asset('img/reply.svg') }}" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <form action="{{url('/home')}}" method="post">
+    @endforeach
+    <form action="{{url('/home/comment')}}" method="post">
         @csrf
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -57,6 +71,9 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="postid" value="{{ $posts->id }}" style="display: none">
+                  </div>
                 <div class="modal-body">
                     <div class="form-group">
                       <textarea class="form-control" name="comment" placeholder="Create Comment" required></textarea>

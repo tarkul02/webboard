@@ -23,5 +23,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'createpost'])->name('createpost');
+
+Route::post('/home/post', [App\Http\Controllers\HomeController::class, 'createpost'])->name('createpost');
+Route::post('/home/comment', [App\Http\Controllers\ShowdetailController::class, 'createcomment'])->name('createcomment');
 Route::get('/home/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');
+
+// Route::group([
+//     'middleware' => 'web.auth',
+// ], function () {
+//     Route::get('/home/checklogin', [App\Http\Controllers\LoginController::class, 'checklogin'])->name('checklogin');
+// });
