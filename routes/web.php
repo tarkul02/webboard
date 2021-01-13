@@ -1,8 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    $posts = DB::select('SELECT * FROM posts');
-    return view('/home', ['posts' => $posts]);
+Route::get('/setLocale/{lang}', function ($lang) {
+    app()->setlocale($lang);
+    session()->put('locale', $lang);
+    return redirect('/home');
 });
 
+Route::get('/', [DashboardController::class, 'index']);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/home/post', [App\Http\Controllers\HomeController::class, 'createpost'])->name('createpost');
 Route::post('/home/comment', [App\Http\Controllers\ShowdetailController::class, 'createcomment'])->name('createcomment');

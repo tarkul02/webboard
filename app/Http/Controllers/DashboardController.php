@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -16,14 +16,14 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-         $this->middleware('auth');
+        return view('home');
     }
 
     public function index() 
     {
     
         $posts = Posts::All();
-        // dd($posts[0]->postview()->count());
+        // dd($posts[0]->comment()->count());
         return view('home', ['posts' => $posts]);
     }
 

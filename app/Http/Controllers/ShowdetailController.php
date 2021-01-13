@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
+use App\Models\Postviews;
 class ShowdetailController extends Controller
 {
     /**
@@ -15,10 +16,20 @@ class ShowdetailController extends Controller
      */
     public function index($id)
     {
+
+        $user_id = 0;
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+        }
+        Postviews::insert([
+            [
+                'users_id' => $user_id , 
+                'post_id' =>  $id
+            ],
+        ]);
+
         $posts = Posts::where('id', $id)->first();
-        
-        // $comment = $posts->comment()->get();
-        // dd($comment[0]->user()->first()->name);
+
         return view('/detail', ['posts' => $posts]);
     }
 
@@ -38,7 +49,7 @@ class ShowdetailController extends Controller
             [
                 'users_id' => $user_id , 
                 'post_id' => $request->post('postid'), 
-                'detail' => $request->post('comment')
+                'detail' => $request->post('comment'),
             ],
         ]);
         return redirect()->back();

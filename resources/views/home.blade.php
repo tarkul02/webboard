@@ -5,7 +5,7 @@
 <div class="container bg-white pl-5 pr-5 pb-5 showpost">
     <div class="row justify-content-center">
         <div class="col-md-12 mb-3 pl-4 pr-3 mt-4" >
-          <div class="div_headname">ECOCForum</div>
+          <div class="div_headname">ECOCForum{{ __('messages.NEW POST') }}</div>
           <div class="div_newpost">
             <button type="button" class="newpost" data-toggle="modal"  data-whatever="@mdo" onclick="createpost()">
               <img src="{{ asset('img/createpost.svg') }}" alt="">
@@ -33,8 +33,8 @@
                   <div class="forum_sub_title">{{ substr($item->title,0,120) }}</div>
                 </div>
               </td>
-              <td>5</td>
-              <td>50</td>
+              <td>{{ $item->comment()->count() }}</td>
+              <td>{{ $item->postview()->count() }}</td>
               <td style="text-align:right;">
                 @php
                 $cls_date = new DateTime($item->created_at);

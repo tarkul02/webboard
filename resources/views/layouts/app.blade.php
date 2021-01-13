@@ -73,6 +73,20 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               {{ strtoupper(app()->getLocale()) }}
+                            </a>
+    
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/setLocale/en">
+                                    EN
+                                </a>
+                                <a class="dropdown-item" href="/setLocale/zh">
+                                    ZH
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

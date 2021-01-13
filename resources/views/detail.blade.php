@@ -14,15 +14,15 @@
             </div>
             <div class="reply_comment">
                 <div class="view">
-                    @php
+                    {{-- @php
                         $totalcomment=0;
                     @endphp
                     @foreach ($posts->comment()->get() as $comment)
                     @php
                         $totalcomment++;
                     @endphp
-                    @endforeach
-                    {{$totalcomment}}
+                    @endforeach --}}
+                    {{$posts->comment()->get()->count()}}
                 </div>
                 <div class="reply" onclick="commentpost()">
                     Reply
@@ -45,11 +45,7 @@
                     </div>
                     <div class="reply_comment_post">
                         <div class="view">
-                            @php
-                                $cls_date = new DateTime($comment->created_at);
-                                $newdate = $cls_date->format('d-M-Y');
-                            @endphp
-                            {{  substr($newdate,0,15) }}
+                            {{$comment->created_at->format('d-M-Y')}}
                         </div>
                         <div class="reply" onclick="commentpost()">
                             Reply
