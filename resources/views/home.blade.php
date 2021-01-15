@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title' , 'Home Page')
+@section('title' , 'ECOCForum')
 @section('content')
 <div class="container bg-white pl-5 pr-5 pb-5 showpost">
     <div class="row justify-content-center">
         <div class="col-md-12 mb-3 pl-4 pr-3 mt-4" >
-          <div class="div_headname">ECOCForum{{ __('messages.NEW POST') }}</div>
+          <div class="div_headname">ECOC{{ __('messages.Forum') }}</div>
           <div class="div_newpost">
             <button type="button" class="newpost" data-toggle="modal"  data-whatever="@mdo" onclick="createpost()">
               <img src="{{ asset('img/createpost.svg') }}" alt="">
-            NEW POST
+              {{ __('messages.NEW POST') }}
             </button>
           </div>
         </div>
@@ -18,10 +18,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col" style="width:65%">Topic</th>
-            <th scope="col" style="width:10%">Repiles</th>
-            <th scope="col" style="width:10%">Views</th>
-            <th scope="col" style="width:15%; text-align:right;">Post Date</th>
+            <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+            <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
+            <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
+            <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -53,28 +53,28 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Topic</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('messages.New Topic') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">name:</label>
-                    <input type="text" class="form-control" name="name" placeholder="Create Name" required>
+                    <label for="recipient-name" class="col-form-label">{{ __('messages.Name') }}:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Create Name" required="" oninvalid="this.setCustomValidity('Please Enter Name')">
                   </div>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">title:</label>
-                    <input type="text" class="form-control" name="title" placeholder="Create Title" required>
+                    <label for="recipient-name" class="col-form-label">{{ __('messages.Title') }}:</label>
+                    <input type="text" class="form-control" name="title" placeholder="Create Title" required="" oninvalid="this.setCustomValidity('Please Enter Title.')">
                   </div>
                   <div class="form-group">
-                    <label for="message-text" class="col-form-label">Message:</label>
-                    <textarea class="form-control" name="detail" placeholder="Create Detail" required></textarea>
+                    <label for="message-text" class="col-form-label">{{ __('messages.Message') }}:</label>
+                    <textarea class="form-control" name="detail" placeholder="Create Detail" required="" oninvalid="this.setCustomValidity('Please Enter Detail')"></textarea>
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-cencelpost" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-createpost">Create</button>
+                <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
+                <button type="submit" class="btn btn-createpost">{{ __('messages.Create') }}</button>
               </div>
             </div>
           </div>
@@ -96,6 +96,6 @@
     }else{
         $('#exampleModal').modal();
       }
-    }
+  }
 </script>
 @endsection

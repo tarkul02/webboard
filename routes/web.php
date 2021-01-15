@@ -19,7 +19,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/setLocale/{lang}', function ($lang) {
     app()->setlocale($lang);
     session()->put('locale', $lang);
-    return redirect('/home');
+    return redirect()->back();
 });
 
 Route::get('/', [DashboardController::class, 'index']);
@@ -31,6 +31,9 @@ Route::post('/home/post', [App\Http\Controllers\HomeController::class, 'createpo
 Route::post('/home/comment', [App\Http\Controllers\ShowdetailController::class, 'createcomment'])->name('createcomment');
 Route::get('/home/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');
 
+Route::post('/home/selectcomment', [App\Http\Controllers\ShowdetailController::class, 'selectupdatecomment'])->name('selectupdatecomment');
+
+Route::post('/home/updatecomment', [App\Http\Controllers\ShowdetailController::class, 'updatecomment'])->name('updatecomment');
 // Route::group([
 //     'middleware' => 'web.auth',
 // ], function () {
