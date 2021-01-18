@@ -42,6 +42,15 @@
     font-size: 14px;
     font-weight: 100;
     color: #919191;
+    cursor: pointer;
+}
+
+.forum_sub_title img {
+    margin-top: -3px;
+    background-color: #ff00000f;
+    padding: 2px;
+    border-radius: 6px;
+    margin-left: 1px;
 }
 
 .forum_sub_head_detail {
@@ -124,7 +133,7 @@
 .reply_comment_post .reply {
     display: inline;
     position: relative;
-    padding: 7px 5px;
+    padding: 4px 5px;
     cursor: pointer;
     font-size: 15px;
     border-radius: 3px;
@@ -177,21 +186,33 @@
 .reply_comment_post .viewcomment {
     display: inline;
     position: relative;
-    padding: 0 5px;
     font-size: 15px;
     color: #7F4AB2;
     font-weight: bold;
     cursor: pointer;
+    padding: 3px;
+    background-color: #cccccc;
+    border-radius: 5px;
 }
 
 .reply_comment_post .deletecomment {
     display: inline;
     position: relative;
-    padding: 0 5px;
     font-size: 15px;
     color: red;
     font-weight: bold;
     cursor: pointer;
+    padding: 3px;
+    background-color: #cccccc;
+    border-radius: 5px;
+}
+
+.reply_comment_post .deletecomment:hover {
+    background-color: #ffd1d1;
+}
+
+.reply_comment_post .viewcomment:hover {
+    background-color: #ffd1d1;
 }
 
 .null {

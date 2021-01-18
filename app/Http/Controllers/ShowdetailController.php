@@ -80,8 +80,8 @@ class ShowdetailController extends Controller
         $data = $request->all();
         $success = 'success';
         DB::table('Comment')->where('id', $data['id'])->delete();
-        return redirect()->back();
-    }
+        return response()->json(['success' => $success ]);
+        }
 
     /**
      * Store a newly created resource in storage.

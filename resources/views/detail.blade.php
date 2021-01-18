@@ -7,7 +7,7 @@
             <div class="card mt-1 bg-white showpost">
                 <div class="p-5">
                     <div class="font-weight-bold forum_sub_head_detail">{{ $posts->name}}</div>
-                    <div class="forum_sub_date_detail">{{$posts->created_at->format('d-M-Y')}}</div>
+                    <div class="forum_sub_date_detail">{{$posts->created_at->format('d-M-Y')}} : {{( $posts->user->name)}}</div>
                     <div class="forum_sub_title_detail"><p>{{ $posts->title }}</p></div>
                     <div class="forum_sub_title">{!! $posts->detail !!}</div>
                 </div>
@@ -41,10 +41,10 @@
                         </div>
                         @if (Auth::check() == 1) 
                             <div id="{{$comment->id}}" class="{{ Auth::user()->id ==  $comment->user->id ? 'deletecomment' : 'null' }}">
-                                Delete
+                                <img src="{{ asset('img/trash.svg') }}" alt="">
                             </div>
                             <div id="{{$comment->id}}" class="{{ Auth::user()->id ==  $comment->user->id ? 'viewcomment' : 'null' }}">
-                                Edit
+                                <img src="{{ asset('img/pencil.svg') }}" alt="">
                             </div>
                         @endif
                         <div class="reply" onclick="commentpost()">
@@ -119,13 +119,11 @@
     <script type="text/javascript">
         
         $( document ).ready(function() {
-            // if("{{Auth::check()}}" == false)
-            // console.log("{{Auth::check()}}")
 
             $(".viewcomment").click(function() {
                 $('#updatecomment').modal();
                 var id = this.id;
-                var url = '<?php echo route("selectupdatecomment") ?>'
+                var url = '<?php echo route("selectupdatecomment") ?>'    
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -134,29 +132,45 @@
                     url:url,
                     data:{id:id},
                     success:function(data){
-                       console.log(data);
                        $('#commentid').val(data.id);
                        $('#updatedetail').val(data.detail);
                     }
                 });
             });
 
+            
             $(".deletecomment").click(function() {
                 var id = this.id;
                 var url = '<?php echo route("deletecomment") ?>'
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type:'POST',
-                    url:url,
-                    data:{id:id},
-                    success:function(data){
-                       window.history.back()
-                       console.log(data);
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this comment !",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            type:'POST',
+                            url:url,
+                            data:{id:id},
+                            success:function(data){
+                                swal("This comment has been deleted!", {
+                                    icon: "success",
+                                    timer: 3000,
+                                }).then(function () {
+                                    location.reload();
+                                });;
+                            }
+                        });
                     }
                 });
             });
+
         });
 
         function commentpost() {

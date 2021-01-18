@@ -31,10 +31,12 @@ Route::post('/home/post', [App\Http\Controllers\HomeController::class, 'createpo
 Route::post('/home/comment', [App\Http\Controllers\ShowdetailController::class, 'createcomment'])->name('createcomment');
 Route::get('/home/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');
 
+Route::post('/home/editpost', [App\Http\Controllers\HomeController::class, 'editpost'])->name('editpost');
+Route::post('/home/updatepost', [App\Http\Controllers\HomeController::class, 'updatepost'])->name('updatepost');
+Route::post('/home/deletepost', [App\Http\Controllers\HomeController::class, 'deletepost'])->name('deletepost');
+
 Route::post('/home/selectcomment', [App\Http\Controllers\ShowdetailController::class, 'selectupdatecomment'])->name('selectupdatecomment');
-
 Route::post('/home/updatecomment', [App\Http\Controllers\ShowdetailController::class, 'updatecomment'])->name('updatecomment');
-
 Route::post('/home/deletecomment', [App\Http\Controllers\ShowdetailController::class, 'deletecomment'])->name('deletecomment');
 
 // Route::group([

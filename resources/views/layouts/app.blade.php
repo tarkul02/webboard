@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 </head>
 <body>
@@ -75,7 +76,7 @@
                         @endguest
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               {{ strtoupper(app()->getLocale()) }}
+                               {{ strtoupper(app()->getLocale() ==  'en' ? 'EN' : '中文') }}
                             </a>
     
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -83,7 +84,7 @@
                                     EN
                                 </a>
                                 <a class="dropdown-item" href="/setLocale/zh">
-                                    ZH
+                                    中文
                                 </a>
                             </div>
                         </li>
