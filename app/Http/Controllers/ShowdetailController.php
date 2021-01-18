@@ -66,10 +66,11 @@ class ShowdetailController extends Controller
     public function updatecomment(Request $request)
     {
         $id = $request->post('commentid');
-        $comment = Comment::where('id',  $id)->first();
-        $comment->update([
-            'detail' => $request->post('comment'),
-        ]);
+        $updatedetail = $request->post('updatedetail');
+
+        DB::table('Comment')
+            ->where('id', $id)
+            ->update(array('detail' => $updatedetail));
 
         return redirect()->back();
     }

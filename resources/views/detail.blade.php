@@ -39,9 +39,14 @@
                         <div class="view">
                             {{$comment->created_at->format('d-M-Y')}}
                         </div>
-                        <div id="{{$comment->id}}" class="{{ Auth::user()->id ==  $comment->user->id ? 'viewcomment' : 'null' }}">
-                            Edit
-                        </div>
+                        @if (Auth::check() == 1) 
+                            <div id="{{$comment->id}}" class="{{ Auth::user()->id ==  $comment->user->id ? 'deletecomment' : 'null' }}">
+                                Delete
+                            </div>
+                            <div id="{{$comment->id}}" class="{{ Auth::user()->id ==  $comment->user->id ? 'viewcomment' : 'null' }}">
+                                Edit
+                            </div>
+                        @endif
                         <div class="reply" onclick="commentpost()">
                             {{ __('messages.Replycommemt') }}
                             <img src="{{ asset('img/reply.svg') }}" alt="">
@@ -96,7 +101,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <textarea class="form-control" id="updatedetail" name="comment" placeholder="Create Comment" required></textarea>
+                        <textarea class="form-control" id="updatedetail" name="updatedetail" placeholder="Create Comment" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

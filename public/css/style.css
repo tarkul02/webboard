@@ -184,6 +184,16 @@
     cursor: pointer;
 }
 
+.reply_comment_post .deletecomment {
+    display: inline;
+    position: relative;
+    padding: 0 5px;
+    font-size: 15px;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .null {
     display: none;
 }

@@ -34,6 +34,7 @@ Route::get('/home/{id}', [App\Http\Controllers\ShowdetailController::class, 'ind
 Route::post('/home/selectcomment', [App\Http\Controllers\ShowdetailController::class, 'selectupdatecomment'])->name('selectupdatecomment');
 
 Route::post('/home/updatecomment', [App\Http\Controllers\ShowdetailController::class, 'updatecomment'])->name('updatecomment');
+
 // Route::group([
 //     'middleware' => 'web.auth',
 // ], function () {
