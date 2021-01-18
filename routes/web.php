@@ -35,6 +35,8 @@ Route::post('/home/selectcomment', [App\Http\Controllers\ShowdetailController::c
 
 Route::post('/home/updatecomment', [App\Http\Controllers\ShowdetailController::class, 'updatecomment'])->name('updatecomment');
 
+Route::post('/home/deletecomment', [App\Http\Controllers\ShowdetailController::class, 'deletecomment'])->name('deletecomment');
+
 // Route::group([
 //     'middleware' => 'web.auth',
 // ], function () {

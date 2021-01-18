@@ -75,6 +75,14 @@ class ShowdetailController extends Controller
         return redirect()->back();
     }
 
+    public function deletecomment(Request $request)
+    {
+        $data = $request->all();
+        $success = 'success';
+        DB::table('Comment')->where('id', $data['id'])->delete();
+        return redirect()->back();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

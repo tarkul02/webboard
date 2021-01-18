@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card mt-1 bg-white showpost">
                 <div class="p-5">
-                    <div class="font-weight-bold forum_sub_head_detail">{{ $posts->name }}</div>
+                    <div class="font-weight-bold forum_sub_head_detail">{{ $posts->name}}</div>
                     <div class="forum_sub_date_detail">{{$posts->created_at->format('d-M-Y')}}</div>
                     <div class="forum_sub_title_detail"><p>{{ $posts->title }}</p></div>
                     <div class="forum_sub_title">{!! $posts->detail !!}</div>
@@ -137,6 +137,23 @@
                        console.log(data);
                        $('#commentid').val(data.id);
                        $('#updatedetail').val(data.detail);
+                    }
+                });
+            });
+
+            $(".deletecomment").click(function() {
+                var id = this.id;
+                var url = '<?php echo route("deletecomment") ?>'
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type:'POST',
+                    url:url,
+                    data:{id:id},
+                    success:function(data){
+                       window.history.back()
+                       console.log(data);
                     }
                 });
             });
