@@ -22,9 +22,9 @@ class HomeController extends Controller
     public function index() 
     {
     
-        $posts = Posts::All();
+        $posts = Posts::paginate(20);
         // dd($posts[0]->postview()->count());
-        return view('home', ['posts' => $posts]);
+        return view('home', compact('posts'));
     }
 
     /**

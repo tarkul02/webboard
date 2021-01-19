@@ -52,6 +52,7 @@
           @endforeach
         </tbody>
       </table>
+      {{ $posts->links()}}
     </div>
     <form action="{{url('/home/post')}}" method="post">
       @csrf
@@ -127,8 +128,6 @@
 @section('javascript')
 <script type="text/javascript">
   $( document ).ready(function() {
-    // if("{{Auth::check()}}" == false)
-    // console.log("{{Auth::check()}}")
 
     $(".editpost").click(function() {
         $('#updatepost').modal();

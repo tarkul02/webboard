@@ -280,3 +280,105 @@ td {
     border-radius: 30px;
     padding: 5px 25px;
 }
+
+
+/* slider */
+
+.imgScrollWrap_2 ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.imgScrollWrap_2,
+.imgScrollWrap_3 {
+    position: relative;
+    width: 600px;
+    height: 120px;
+    border: 1px #999 solid;
+    overflow: hidden;
+}
+
+.imgScrollBtn01_2,
+.imgScrollBtn02_2,
+.imgScrollBtn01_3,
+.imgScrollBtn02_3 {
+    position: absolute;
+    display: block;
+    width: 22px;
+    height: 40px;
+    background: url(images/mainBG.png) no-repeat 0 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.imgScrollBtn01_2,
+.imgScrollBtn01_3 {
+    top: 40px;
+    left: 0;
+}
+
+.imgScrollBtn02_2,
+.imgScrollBtn02_3 {
+    top: 40px;
+    right: 0;
+    background-position: -22px 0;
+}
+
+.imgScrollBtn01_2:hover,
+.imgScrollBtn01_3:hover {
+    background-position: 0 -40px;
+}
+
+.imgScrollBtn02_2:hover,
+.imgScrollBtn02_2:hover {
+    background-position: -22px -40px;
+}
+
+.imgScrollList_2,
+.imgScrollList_3 {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 560px;
+    height: 120px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.imgScrollList_2 ul,
+.imgScrollList_3 ul {
+    position: relative;
+    width: 9999px;
+    height: 120px;
+}
+
+.imgScrollList_2 li,
+.imgScrollList_3 li {
+    float: left;
+    width: 140px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.imgScrollList_2 li a,
+.imgScrollList_3 li a {
+    float: left;
+    margin: 12px 6px;
+    width: 128px;
+    height: 96px;
+    overflow: hidden;
+}
