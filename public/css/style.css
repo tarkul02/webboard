@@ -282,103 +282,54 @@ td {
 }
 
 
-/* slider */
+/* main */
 
-.imgScrollWrap_2 ul,
-ol,
-li {
-    margin: 0;
-    padding: 0;
+.border-seilecroom {
+    border: 0.1px solid #00000012;
 }
 
-.clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+.selectroom {
+    padding: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
 }
 
-.clearfix {
-    zoom: 1;
+.selectroom img {
+    width: 23px;
+    margin-right: 5px;
 }
 
-.imgScrollWrap_2,
-.imgScrollWrap_3 {
-    position: relative;
-    width: 600px;
-    height: 120px;
-    border: 1px #999 solid;
-    overflow: hidden;
+.head_loom {
+    background-color: #6E27B1;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 30px;
 }
 
-.imgScrollBtn01_2,
-.imgScrollBtn02_2,
-.imgScrollBtn01_3,
-.imgScrollBtn02_3 {
-    position: absolute;
-    display: block;
-    width: 22px;
-    height: 40px;
-    background: url(images/mainBG.png) no-repeat 0 0;
-    overflow: hidden;
-    z-index: 2;
+.head_loom .headtext {
+    color: white;
+    font-size: 20px;
 }
 
-.imgScrollBtn01_2,
-.imgScrollBtn01_3 {
-    top: 40px;
-    left: 0;
+.headtable {
+    width: 100%;
+    padding: 0px 30px;
 }
 
-.imgScrollBtn02_2,
-.imgScrollBtn02_3 {
-    top: 40px;
-    right: 0;
-    background-position: -22px 0;
+.tablefooter {
+    width: 100%;
+    padding: 0px 30px 20px 30px;
 }
 
-.imgScrollBtn01_2:hover,
-.imgScrollBtn01_3:hover {
-    background-position: 0 -40px;
+.tablefooter .viewall {
+    text-align: right;
+    color: #7F4AB2;
+    font-weight: bold;
 }
 
-.imgScrollBtn02_2:hover,
-.imgScrollBtn02_2:hover {
-    background-position: -22px -40px;
-}
-
-.imgScrollList_2,
-.imgScrollList_3 {
-    position: absolute;
-    top: 0;
-    left: 20px;
-    width: 560px;
-    height: 120px;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.imgScrollList_2 ul,
-.imgScrollList_3 ul {
-    position: relative;
-    width: 9999px;
-    height: 120px;
-}
-
-.imgScrollList_2 li,
-.imgScrollList_3 li {
-    float: left;
-    width: 140px;
-    height: 120px;
-    overflow: hidden;
-}
-
-.imgScrollList_2 li a,
-.imgScrollList_3 li a {
-    float: left;
-    margin: 12px 6px;
-    width: 128px;
-    height: 96px;
-    overflow: hidden;
+.showpostmain {
+    box-shadow: 0px 3px 10px #0000002b;
+    margin-bottom: 30px;
+    border-radius: 5px;
 }
