@@ -2,13 +2,24 @@
 
 @section('title' , 'ECOCForum')
 @section('content')
-<div class="container bg-white showpostmain">
-  <div class="row justify-content-center">
-      <div class="col-md-12 head_loom">
-        <div class="headtext">
-          Medium
-        </div>
+<div class="container mb-5 bgnew">
+  <div class="row justify-content-center" >
+    <div class="col-md-12 head_loom">
+      <div class="headtext">
+        Medium
       </div>
+    </div>
+    <div class="col-md-12 ">
+      <div class="owl-carousel owl-theme mt-3 mb-4">
+        @foreach ($response['items'] as $item)
+          <div class="item">
+            {{-- {{dd( $item)}} --}}
+            <div><img src="{{$item['thumbnail']}}" alt=""></div>
+            <div class="text">{{$item['title']}}</div>
+          </div>
+        @endforeach
+      </div>
+    </div>
   </div>
 </div> 
 <div class="container bg-white showpostmain">
@@ -467,5 +478,26 @@
 @endsection
 
 @section('javascript')
+<script type="text/javascript">
+  jQuery(document).ready(function($){
 
+    $('.owl-carousel').owlCarousel({
+      loop:true,
+      margin:10,
+      nav:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1000:{
+          items:4
+        }
+      }
+    })
+  })
+
+</script>
 @endsection

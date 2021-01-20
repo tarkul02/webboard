@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Rooms;
 use App\Models\Posts;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
@@ -34,7 +35,9 @@ class DashboardController extends Controller
         $oracles = Posts::where('rooms_id', 7)->take(2)->orderBy('id', 'DESC')->get();
         $defis = Posts::where('rooms_id', 8)->take(2)->orderBy('id', 'DESC')->get();
         // dd($posts[0]->comment()->count());
-        return view('main', compact('rooms','generals','dtwallets','mbwallets','webwallets','webwallets','smartcontracts','dapps','oracles','defis'));
+        $response = Http::get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ECOChain_EN');
+        $response = $response->json();
+        return view('main', compact('rooms','generals','dtwallets','mbwallets','webwallets','webwallets','smartcontracts','dapps','oracles','defis','response'));
     }
 
     /**
