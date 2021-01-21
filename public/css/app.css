@@ -1591,16 +1591,20 @@ pre code {
     color: #212529;
 }
 
-.table th,
-.table td {
+.table th {
     padding: 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid #dee2e654;
+}
+
+.table td {
+    padding: 0.2rem 0.75rem;
     vertical-align: top;
     border-bottom: 1px solid #dee2e654;
 }
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
 }
 
 .table tbody+tbody {

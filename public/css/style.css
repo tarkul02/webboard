@@ -245,7 +245,7 @@ th {
     color: #7F4AB2;
     text-transform: capitalize;
     font-weight: 100;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
 }
 
 td {
@@ -281,6 +281,12 @@ td {
     padding: 5px 25px;
 }
 
+.table {
+    width: 100%;
+    margin-bottom: 0px !important;
+    color: #212529;
+}
+
 
 /* main */
 
@@ -302,6 +308,7 @@ td {
 
 .selectroom img {
     width: 23px;
+    height: 23px;
     margin-right: 5px;
 }
 
@@ -320,23 +327,34 @@ td {
 
 .head_loom .headtext img {
     width: 25px;
+    height: 25px;
     margin-right: 5px;
+}
+
+.headtablemain {
+    width: 100%;
+    padding: 0px 30px;
+    background-color: #F7F7F7;
+    border-bottom: 2px solid #e7e7e7;
 }
 
 .headtable {
     width: 100%;
-    padding: 0px 30px;
 }
 
 .tablefooter {
     width: 100%;
-    padding: 0px 30px 20px 30px;
+    padding: 10px 50px 20px 50px;
 }
 
 .tablefooter .viewall {
     text-align: right;
     color: #7F4AB2;
     font-weight: bold;
+}
+
+.tablefooter a {
+    text-decoration: underline;
 }
 
 .showpostmain {

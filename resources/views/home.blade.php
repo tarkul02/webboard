@@ -66,6 +66,18 @@
                 </button>
               </div>
               <div class="modal-body">
+                  <select class="form-control form-control-lg" name="selectroom" id="selectroom">
+                    <option>Select Room</option>
+                    @foreach ($rooms as $item)
+                      <option>{{$item->id}} {{$item->name}}</option>
+                    @endforeach
+                  </select>
+                  <select class="form-control form-control-lg mt-2" name="selecttype" id="selecttype">
+                    <option>Select Type</option>
+                    @foreach ($types as $item)
+                      <option>{{$item->id}} {{$item->name}}</option>
+                    @endforeach
+                  </select>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">{{ __('messages.Name') }}:</label>
                     <input type="text" class="form-control" name="name" placeholder="Create Name" required="" oninvalid="this.setCustomValidity('Please Enter Name')">

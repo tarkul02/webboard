@@ -28,5 +28,8 @@ return [
     'New Comment'=>'New Comment',
     'Create Comment'=>'Create Comment',
     'NEW POST' => 'NEW POST',
-
+    'Medium' => 'Medium',
+    'Select Forum' => 'Select Forum',
+    'View ALL' => 'View ALL',
+    'Hot Forum' => 'Hot Forum',
 ];

@@ -6,7 +6,7 @@
   <div class="row justify-content-center" >
     <div class="col-md-12 head_loom">
       <div class="headtext">
-        Medium
+        {{ __('messages.Medium') }}
       </div>
     </div>
     <div class="col-md-12 ">
@@ -19,27 +19,27 @@
           </div>
         @endforeach
       </div>
-      <div class="medium_viewall"><a href="https://medium.com/@ECOChain_EN" target="_blank">View ALL</a></div>
+      <div class="medium_viewall"><a href="https://medium.com/@ECOChain_EN" target="_blank">{{ __('messages.View ALL') }}</a></div>
     </div>
   </div>
 </div> 
 <div class="container" style="border-bottom: 1px solid #cccccc;"></div>
-<div class="container selectroomhead mt-5">Select Forum</div>
+<div class="container selectroomhead mt-5">{{ __('messages.Select Forum') }}</div>
 <div class="container bg-white showpostmain">
   <div class="row justify-content-center">
     @foreach ($rooms as $item)
       <div class="col-md-3 border-seilecroom">
-         <div class="selectroom">
-         <a href="/dashboard/{{$item->id}}">
-          <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
-          {{ $item->name }}
-         </a>
-         </div>
+        <div class="selectroom">
+          <a href="/dashboard/{{$item->id}}">
+            <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
+            {{ $item->name }}
+          </a>
+        </div>
       </div>
     @endforeach
   </div>
 </div> 
-<div class="container selectroomhead">Hot Forum</div>
+<div class="container selectroomhead"> {{ __('messages.Hot Forum') }}</div>
 <div class="container bg-white showpostmain">
     <div class="row justify-content-center">
         <div class="col-md-12 head_loom">
@@ -52,34 +52,31 @@
             @endforeach
           </div>
         </div>
+       
         <div class="headtable">
           <table class="table">
             <thead>
               <tr>
-                <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+                <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
                 <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
                 <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-                <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+                <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($generals as $general)
                   <tr>
-                    <td>
+                    <td class="pl-5">
                       <div class="">
                         <div class="forum_name"><a href="/home/{{$general->id}}">{{ $general->name }}</a></div>
                         <div class="forum_sub_title">
-                          {{ substr($general->title,0,120) }} 
-                          @if (Auth::check() == 1) 
-                            <img id="{{$general->id}}" class="{{ Auth::user()->id ==  $general->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                            <img id="{{$general->id}}" class="{{ Auth::user()->id ==  $general->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                          @endif
+                          {{ substr($general->title,0,120) }}     
                         </div>
                       </div>
                     </td>
                     <td>{{ $general->comment()->count() }} </td>
                     <td>{{ $general->postview()->count() }}</td>
-                    <td style="text-align:right;">
+                    <td style="text-align:right;" class="pr-5">
                       @php
                       $cls_date = new DateTime($general->created_at);
                       $newdate = $cls_date->format('d-M-Y');
@@ -92,7 +89,7 @@
           </table>
         </div>
         <div class="tablefooter">
-          <div class="viewall"><a href="/dashboard/1">View All</a></div>
+          <div class="viewall"><a href="/dashboard/1">{{ __('messages.View ALL') }}</a></div>
         </div>
     </div>
 </div>
@@ -113,30 +110,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($dtwallets as $dtwallet)
                 <tr>
-                  <td>
+                  <td class="pl-5">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$dtwallet->id}}">{{ $dtwallet->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($dtwallet->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$dtwallet->id}}" class="{{ Auth::user()->id ==  $dtwallet->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$dtwallet->id}}" class="{{ Auth::user()->id ==  $dtwallet->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $dtwallet->comment()->count() }} </td>
                   <td>{{ $dtwallet->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($dtwallet->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -149,7 +142,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/2">View All</a></div>
+        <div class="viewall"><a href="/dashboard/2">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>
@@ -169,30 +162,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($mbwallets as $mbwallet)
                 <tr>
-                  <td>
+                  <td class="pl-5">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$mbwallet->id}}">{{ $mbwallet->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($mbwallet->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$mbwallet->id}}" class="{{ Auth::user()->id ==  $mbwallet->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$mbwallet->id}}" class="{{ Auth::user()->id ==  $mbwallet->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $mbwallet->comment()->count() }} </td>
                   <td>{{ $mbwallet->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($mbwallet->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -205,7 +194,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/3">View All</a></div>
+        <div class="viewall"><a href="/dashboard/3">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>
@@ -225,30 +214,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($webwallets as $webwallet)
                 <tr>
-                  <td>
+                  <td class="pl-5">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$webwallet->id}}">{{ $webwallet->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($webwallet->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$webwallet->id}}" class="{{ Auth::user()->id ==  $webwallet->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$webwallet->id}}" class="{{ Auth::user()->id ==  $webwallet->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $webwallet->comment()->count() }} </td>
                   <td>{{ $webwallet->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($webwallet->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -261,7 +246,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/4">View All</a></div>
+        <div class="viewall"><a href="/dashboard/4">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>
@@ -281,30 +266,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($smartcontracts as $smartcontract)
                 <tr>
-                  <td>
+                  <td class="pl-5">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$smartcontract->id}}">{{ $smartcontract->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($smartcontract->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$smartcontract->id}}" class="{{ Auth::user()->id ==  $smartcontract->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$smartcontract->id}}" class="{{ Auth::user()->id ==  $smartcontract->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $smartcontract->comment()->count() }} </td>
                   <td>{{ $smartcontract->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($smartcontract->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -317,7 +298,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/5">View All</a></div>
+        <div class="viewall"><a href="/dashboard/5">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>
@@ -337,30 +318,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($dapps as $dapp)
                 <tr>
-                  <td>
+                  <td class="pl-55">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$dapp->id}}">{{ $dapp->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($dapp->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$dapp->id}}" class="{{ Auth::user()->id ==  $dapp->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$dapp->id}}" class="{{ Auth::user()->id ==  $dapp->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $dapp->comment()->count() }} </td>
                   <td>{{ $dapp->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($dapp->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -373,7 +350,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/6">View All</a></div>
+        <div class="viewall"><a href="/dashboard/6">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>
@@ -393,30 +370,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($oracles as $oracle)
                 <tr>
-                  <td>
+                  <td class="pl-5">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$oracle->id}}">{{ $oracle->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($oracle->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$oracle->id}}" class="{{ Auth::user()->id ==  $oracle->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$oracle->id}}" class="{{ Auth::user()->id ==  $oracle->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $oracle->comment()->count() }} </td>
                   <td>{{ $oracle->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($oracle->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -429,7 +402,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/7">View All</a></div>
+        <div class="viewall"><a href="/dashboard/7">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>
@@ -449,30 +422,26 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
+              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
               <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
               @foreach ($defis as $defi)
                 <tr>
-                  <td>
+                  <td class="pl-5">
                     <div class="">
                       <div class="forum_name"><a href="/home/{{$defi->id}}">{{ $defi->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($defi->title,0,120) }} 
-                        @if (Auth::check() == 1) 
-                          <img id="{{$defi->id}}" class="{{ Auth::user()->id ==  $defi->users_id ? 'editpost' : 'null' }}" src="{{ asset('img/pencil.svg') }}" alt="">
-                          <img id="{{$defi->id}}" class="{{ Auth::user()->id ==  $defi->users_id ? 'deletepost' : 'null' }}" src="{{ asset('img/trash.svg') }}" alt="">
-                        @endif
                       </div>
                     </div>
                   </td>
                   <td>{{ $defi->comment()->count() }} </td>
                   <td>{{ $defi->postview()->count() }}</td>
-                  <td style="text-align:right;">
+                  <td style="text-align:right;" class="pr-5">
                     @php
                     $cls_date = new DateTime($defi->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -485,7 +454,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall"><a href="/dashboard/8">View All</a></div>
+        <div class="viewall"><a href="/dashboard/8">{{ __('messages.View ALL') }}</a></div>
       </div>
   </div>
 </div>

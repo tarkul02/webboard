@@ -28,4 +28,8 @@ return [
     'New Comment'=>'新评论',
     'Create Comment'=>'新建评论',
     'NEW POST' => '新发布',
+    'Medium' => '中',
+    'Select Forum' => '選擇論壇',
+    'View ALL' => '查看全部',
+    'Hot Forum' => '熱門論壇',
 ];

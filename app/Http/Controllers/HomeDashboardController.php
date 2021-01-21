@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rooms;
 use App\Models\Posts;
+use App\Models\Types;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Http;
 
@@ -29,9 +30,10 @@ class HomeDashboardController extends Controller
         if (Auth::check()) {
             $user_id = Auth::user()->id;
         }
-
+        $types = Types::All();
+        $rooms = Rooms::All();
         $posts = Posts::where('rooms_id', $id)->paginate(2);
-        return view('/home', compact('posts'));
+        return view('/home', compact('posts','rooms','types'));
     }
 
     /**

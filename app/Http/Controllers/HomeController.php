@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
+use App\Models\Rooms;
+use App\Models\Types;
 
 class HomeController extends Controller
 {
@@ -23,8 +25,10 @@ class HomeController extends Controller
     {
     
         $posts = Posts::paginate(20);
+        $rooms = Rooms::All();
+        $types = Types::All();
         // dd($posts[0]->postview()->count());
-        return view('home', compact('posts'));
+        return view('home', compact('posts','rooms','types'));
     }
 
     /**
@@ -34,18 +38,25 @@ class HomeController extends Controller
      */
     public function createpost(Request $request)
     {
-       
+        $room = $request->post('selectroom');
+        $room_id = substr($room ,0,1);
+
+        $type = $request->post('selecttype');
+        $type_name = substr($type ,0,1);
+
         $user_id = Auth::user()->id;
 
         DB::table('posts')->insert([
             [
                 'users_id' => $user_id , 
+                'rooms_id' => $room_id , 
+                'type_name' => $type_name , 
                 'name' => $request->post('name') , 
                 'title' => $request->post('title') , 
                 'detail' => $request->post('title')
             ],
         ]);
-        return redirect()->route('home');
+        return redirect()->route('dashboard' ,['id' => $room_id ]);
     }
 
     public function editpost(Request $request)
