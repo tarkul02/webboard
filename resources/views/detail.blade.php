@@ -1,6 +1,23 @@
 @extends('layouts.app')
 @section('title' , 'ECOCForum')
 @section('content')
+<div class="container selectroomhead">Select Forum</div>
+<div class="container">
+    <div class="container bg-white showpostmain">
+        <div class="row justify-content-center">
+          @foreach ($rooms as $item)
+            <div class="col-md-3 border-seilecroom">
+               <div class="selectroom">
+               <a href="/dashboard/{{$item->id}}">
+                <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
+                {{ $item->name }}
+               </a>
+               </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+</div>
 <div class="container">
     <div class="row justify-content-center mb-5 ">
         <div class="col-md-12">

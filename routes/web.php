@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/setLocale/{lang}', function ($lang) {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard/{id}', [HomeDashboardController::class, 'index'])->name('dashboard');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

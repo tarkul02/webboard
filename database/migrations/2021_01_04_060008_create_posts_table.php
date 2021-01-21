@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->integer('users_id');
             $table->integer('rooms_id');
+            $table->integer('type_name');
             $table->string('name', 255);
             $table->string('title', 255);
             $table->text('detail');

@@ -2,7 +2,7 @@
 
 @section('title' , 'ECOCForum')
 @section('content')
-<div class="container mb-5 bgnew">
+<div class="container mt-5 mb-3 bgnew">
   <div class="row justify-content-center" >
     <div class="col-md-12 head_loom">
       <div class="headtext">
@@ -15,29 +15,36 @@
           <div class="item">
             {{-- {{dd( $item)}} --}}
             <div><img src="{{$item['thumbnail']}}" alt=""></div>
-            <div class="text">{{$item['title']}}</div>
+            <div class="text"><a href="{{$item['link']}}" target="_blank">{{$item['title']}}</a></div>
           </div>
         @endforeach
       </div>
+      <div class="medium_viewall"><a href="https://medium.com/@ECOChain_EN" target="_blank">View ALL</a></div>
     </div>
   </div>
 </div> 
+<div class="container" style="border-bottom: 1px solid #cccccc;"></div>
+<div class="container selectroomhead mt-5">Select Forum</div>
 <div class="container bg-white showpostmain">
   <div class="row justify-content-center">
     @foreach ($rooms as $item)
       <div class="col-md-3 border-seilecroom">
          <div class="selectroom">
+         <a href="/dashboard/{{$item->id}}">
           <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
           {{ $item->name }}
+         </a>
          </div>
       </div>
     @endforeach
   </div>
 </div> 
+<div class="container selectroomhead">Hot Forum</div>
 <div class="container bg-white showpostmain">
     <div class="row justify-content-center">
         <div class="col-md-12 head_loom">
           <div class="headtext">
+            <img src="{{ asset('img/mainicon/icon1.svg')}}" alt="">
             @foreach ($rooms as $item)
                 @if ( $item->id == 1)
                   {{ $item->name }}
@@ -85,7 +92,7 @@
           </table>
         </div>
         <div class="tablefooter">
-          <div class="viewall">View All</div>
+          <div class="viewall"><a href="/dashboard/1">View All</a></div>
         </div>
     </div>
 </div>
@@ -94,6 +101,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon2.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 2)
                 {{ $item->name }}
@@ -141,7 +149,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/2">View All</a></div>
       </div>
   </div>
 </div>
@@ -149,6 +157,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon3.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 3)
                 {{ $item->name }}
@@ -196,7 +205,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/3">View All</a></div>
       </div>
   </div>
 </div>
@@ -204,6 +213,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon4.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 4)
                 {{ $item->name }}
@@ -251,7 +261,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/4">View All</a></div>
       </div>
   </div>
 </div>
@@ -259,6 +269,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon5.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 5)
                 {{ $item->name }}
@@ -306,7 +317,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/5">View All</a></div>
       </div>
   </div>
 </div>
@@ -314,6 +325,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon6.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 6)
                 {{ $item->name }}
@@ -361,7 +373,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/6">View All</a></div>
       </div>
   </div>
 </div>
@@ -369,6 +381,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon7.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 7)
                 {{ $item->name }}
@@ -416,7 +429,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/7">View All</a></div>
       </div>
   </div>
 </div>
@@ -424,6 +437,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
+          <img src="{{ asset('img/mainicon/icon8.svg')}}" alt="">
           @foreach ($rooms as $item)
               @if ( $item->id == 8)
                 {{ $item->name }}
@@ -471,7 +485,7 @@
         </table>
       </div>
       <div class="tablefooter">
-        <div class="viewall">View All</div>
+        <div class="viewall"><a href="/dashboard/8">View All</a></div>
       </div>
   </div>
 </div>
@@ -490,7 +504,7 @@
           items:1
         },
         600:{
-          items:3
+          items:2
         },
         1000:{
           items:4

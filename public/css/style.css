@@ -296,6 +296,10 @@ td {
     font-size: 18px;
 }
 
+.selectroom a {
+    color: #3D3D3D;
+}
+
 .selectroom img {
     width: 23px;
     margin-right: 5px;
@@ -310,6 +314,13 @@ td {
 .head_loom .headtext {
     color: white;
     font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.head_loom .headtext img {
+    width: 25px;
+    margin-right: 5px;
 }
 
 .headtable {
@@ -377,6 +388,21 @@ td {
     border-radius: 5px;
     background-color: #00000029;
 }
+
+.medium_viewall {
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: 600;
+    color: #7F4AB2;
+}
+
+.selectroomhead {
+    padding: 15px 0;
+    color: #00000085;
+}
+
+
+/* slider */
 
 .owl-dots {
     display: none;

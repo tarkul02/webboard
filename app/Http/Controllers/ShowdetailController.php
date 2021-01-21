@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
 use App\Models\Postviews;
+use App\Models\Rooms;
 class ShowdetailController extends Controller
 {
     /**
@@ -18,6 +19,7 @@ class ShowdetailController extends Controller
     public function index($id)
     {
 
+        $rooms = Rooms::All();
         $user_id = 0;
         if (Auth::check()) {
             $user_id = Auth::user()->id;
@@ -31,7 +33,7 @@ class ShowdetailController extends Controller
 
         $posts = Posts::where('id', $id)->first();
 
-        return view('/detail', ['posts' => $posts]);
+        return view('/detail', compact('posts','rooms'));
     }
 
     /**
