@@ -30,10 +30,11 @@ class HomeDashboardController extends Controller
         if (Auth::check()) {
             $user_id = Auth::user()->id;
         }
+        $roomtitle = Rooms::where('id', $id)->get();
         $types = Types::All();
         $rooms = Rooms::All();
         $posts = Posts::where('rooms_id', $id)->paginate(2);
-        return view('/home', compact('posts','rooms','types'));
+        return view('/home', compact('posts','rooms','types','roomtitle'));
     }
 
     /**
