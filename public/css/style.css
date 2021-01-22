@@ -455,3 +455,40 @@ td {
 .owl-carousel .owl-nav button.owl-prev:hover {
     background-color: unset !important;
 }
+
+.mobileselect {
+    display: none;
+}
+
+.mobileselect button {
+    background-color: #6E27B1;
+}
+
+.mobileselect button:hover {
+    background-color: #6E27B1;
+}
+
+.mobileselect button:focus {
+    background-color: #6E27B1;
+}
+
+.mobileselect img {
+    width: 20px;
+    height: 20px;
+}
+
+.mobileselect a:hover {
+    background-color: #844cb982;
+}
+
+@media only screen and (max-width: 600px) {
+    .decktopselect {
+        display: none;
+    }
+    .mobileselect {
+        display: inline;
+    }
+    .owl-carousel .item {
+        height: 17rem !important;
+    }
+}

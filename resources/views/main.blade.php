@@ -23,12 +23,12 @@
     </div>
   </div>
 </div> 
-<div class="container" style="border-bottom: 1px solid #cccccc;"></div>
-<div class="container selectroomhead mt-5">{{ __('messages.Select Forum') }}</div>
-<div class="container bg-white showpostmain">
+<div class="container mb-4" style="border-bottom: 1px solid #cccccc;"></div>
+<div class="container selectroomhead decktopselect mt-5">{{ __('messages.Select Forum') }}</div>
+<div class="container bg-white showpostmain decktopselect">
   <div class="row justify-content-center">
     @foreach ($rooms as $item)
-      <div class="col-md-3 border-seilecroom">
+      <div class="col-md-3 col-sm-3 col-3 border-seilecroom">
         <div class="selectroom">
           <a href="/dashboard/{{$item->id}}">
             <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
@@ -39,7 +39,22 @@
     @endforeach
   </div>
 </div> 
-<div class="container selectroomhead"> {{ __('messages.Hot Forum') }}</div>
+<div class="container mobileselect" style="padding:0px; margin-top:20px; margin-bottom: 20px;" >
+  <div class="dropdown ">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ __('messages.Select Forum') }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      @foreach ($rooms as $item)
+        <a class="dropdown-item" href="/dashboard/{{$item->id}}">
+          <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
+          {{ $item->name }}
+        </a>
+      @endforeach 
+    </div>
+  </div>
+</div>
+<div class="container selectroomhead mt-4"> {{ __('messages.Hot Forum') }}</div>
 <div class="container bg-white showpostmain">
     <div class="row justify-content-center">
         <div class="col-md-12 head_loom">

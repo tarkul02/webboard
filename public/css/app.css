@@ -2548,7 +2548,6 @@ fieldset:disabled a.btn {
 .btn-secondary:not(:disabled):not(.disabled).active,
 .show>.btn-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #545b62;
     border-color: #4e555b;
 }
 
@@ -4644,7 +4643,6 @@ input[type=button].btn-block {
 
 .navbar-light .navbar-toggler {
     color: rgba(0, 0, 0, 0.5);
-    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .navbar-light .navbar-toggler-icon {
