@@ -4,6 +4,7 @@
 
 return [
     'Login'=> '登录',
+    'Admin Login'=> 'Admin Login',
     'Register'=> '注册',
     'Topic'=> '主题',
     'Repiles'=> '回复',

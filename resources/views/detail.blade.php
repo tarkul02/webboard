@@ -74,7 +74,7 @@
         </div>
     @endforeach
     {{-- create comment --}}
-    <form action="{{url('/home/comment')}}" method="post">
+    <form action="{{url('/comment')}}" method="post">
         @csrf
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -102,7 +102,7 @@
         </div>
     </form>
     {{-- update comment --}}
-    <form action="{{url('/home/updatecomment')}}" method="post">
+    <form action="{{url('/updatecomment')}}" method="post">
         @csrf
         <div class="modal fade" id="updatecomment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

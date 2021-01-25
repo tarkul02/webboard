@@ -33,7 +33,7 @@
             <tr>
               <td>
                 <div class="">
-                  <div class="forum_name"><a href="/home/{{$item->id}}">{{ $item->name }}</a></div>
+                  <div class="forum_name"><a href="/post/{{$item->id}}">{{ $item->name }}</a></div>
                   <div class="forum_sub_title">
                     {{ substr($item->title,0,120) }} 
                     @if (Auth::check() == 1) 
@@ -58,7 +58,7 @@
       </table>
       {{ $posts->links()}}
     </div>
-    <form action="{{url('/home/post')}}" method="post">
+    <form action="{{url('/post')}}" method="post">
       @csrf
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -103,7 +103,7 @@
           </div>
         </div>
     </form>
-    <form action="{{url('/home/updatepost')}}" method="post">
+    <form action="{{url('/updatepost')}}" method="post">
       @csrf
       <div class="modal fade" id="updatepost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

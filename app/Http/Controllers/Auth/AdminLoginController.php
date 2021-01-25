@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-class LoginController extends Controller
+use Validator;
+use Illuminate\Http\Request;
+
+class AdminLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'admin/';
     /**
      * Create a new controller instance.
      *
@@ -39,6 +42,32 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
+    public function showLoginForm()
+    {
+        if (Auth::guard('web-admin')->check()) {
+            return redirect('/admin');
+        } elseif (strpos(url()->previous(), "login") == false) {
+            session(['url.intended' => url()->previous()]);
+        }
+        return view('auth.admin.login');
+    }
+
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['message'=>$validator->errors()], 401);
+        }
+
+        $credentials = $request->only('email', 'password');
+        if (!Auth::guard('web-admin')->attempt($credentials)) {
+            return view('auth.admin.login');
+        }
+        return redirect('/admin');
+    }
 }
 
 

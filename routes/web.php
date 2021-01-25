@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeDashboardController;
+use App\Http\Controllers\Auth\AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,22 +28,53 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::get('/dashboard/{id}', [HomeDashboardController::class, 'index'])->name('dashboard');
 Auth::routes();
 
+Route::group([
+    'prefix' => 'admin'
+], function () {
+    Route::get('/login',[AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login',[AdminLoginController::class, 'login'])->name('admin.getLogin');
+    Route::group([
+        'middleware' => 'admin.auth',
+    ], function () {
+        Route::get('/', function() {
+            return view('admin/home');
+        })->name('admin');
+    });
+});
+
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::post('/home/post', [App\Http\Controllers\HomeController::class, 'createpost'])->name('createpost');
-Route::post('/home/comment', [App\Http\Controllers\ShowdetailController::class, 'createcomment'])->name('createcomment');
-Route::get('/home/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');
+Route::get('/post/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');
 
-Route::post('/home/editpost', [App\Http\Controllers\HomeController::class, 'editpost'])->name('editpost');
-Route::post('/home/updatepost', [App\Http\Controllers\HomeController::class, 'updatepost'])->name('updatepost');
-Route::post('/home/deletepost', [App\Http\Controllers\HomeController::class, 'deletepost'])->name('deletepost');
+Route::group([
+    'prefix' => 'post'
+], function () {
+    Route::post('/', [App\Http\Controllers\HomeController::class, 'createpost'])->name('createpost');
 
-Route::post('/home/selectcomment', [App\Http\Controllers\ShowdetailController::class, 'selectupdatecomment'])->name('selectupdatecomment');
-Route::post('/home/updatecomment', [App\Http\Controllers\ShowdetailController::class, 'updatecomment'])->name('updatecomment');
-Route::post('/home/deletecomment', [App\Http\Controllers\ShowdetailController::class, 'deletecomment'])->name('deletecomment');
+    Route::group([
+        'middleware' => 'auth',
+    ], function () {
+        Route::post('/editpost', [App\Http\Controllers\HomeController::class, 'editpost'])->name('editpost');
+        Route::post('/updatepost', [App\Http\Controllers\HomeController::class, 'updatepost'])->name('updatepost');
+        Route::post('/deletepost', [App\Http\Controllers\HomeController::class, 'deletepost'])->name('deletepost');
+    });
+});
 
+Route::group([
+    'prefix' => 'comment'
+], function () {
+    Route::post('/', [App\Http\Controllers\ShowdetailController::class, 'createcomment'])->name('createcomment');
+    Route::post('/select', [App\Http\Controllers\ShowdetailController::class, 'selectupdatecomment'])->name('selectupdatecomment');
+    Route::group([
+        'middleware' => 'auth',
+    ], function () {
+        Route::post('/update', [App\Http\Controllers\ShowdetailController::class, 'updatecomment'])->name('updatecomment');
+        Route::post('/delete', [App\Http\Controllers\ShowdetailController::class, 'deletecomment'])->name('deletecomment');
+    });
+});
 // Route::group([
 //     'middleware' => 'web.auth',
 // ], function () {
-//     Route::get('/home/checklogin', [App\Http\Controllers\LoginController::class, 'checklogin'])->name('checklogin');
+//     Route::get('/checklogin', [App\Http\Controllers\LoginController::class, 'checklogin'])->name('checklogin');
 // });
