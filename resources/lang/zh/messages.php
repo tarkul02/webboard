@@ -33,4 +33,5 @@ return [
     'Select Forum' => '選擇論壇',
     'View ALL' => '查看全部',
     'Hot Forum' => '熱門論壇',
+    ' General' => ' General'
 ];

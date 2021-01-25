@@ -33,4 +33,5 @@ return [
     'Select Forum' => 'Select Forum',
     'View ALL' => 'View ALL',
     'Hot Forum' => 'Hot Forum',
+    ' General' => ' General'
 ];

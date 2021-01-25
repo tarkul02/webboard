@@ -5,7 +5,11 @@
 <div class="container bg-white pl-5 pr-5 pb-5 showpost">
     <div class="row justify-content-center">
         <div class="col-md-12 mb-3 pl-4 pr-3 mt-4" >
-          <div class="div_headname">ECOC{{ __('messages.Forum') }}</div>
+          <div class="div_headname">
+            @foreach ($roomtitle as $item)
+                {{ $item->name}}
+            @endforeach
+            {{ __('messages.Forum') }}</div>
           <div class="div_newpost">
             <button type="button" class="newpost" data-toggle="modal"  data-whatever="@mdo" onclick="createpost()">
               <img src="{{ asset('img/createpost.svg') }}" alt="">
@@ -18,10 +22,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col" style="width:65%">{{ __('messages.Topic') }}</th>
-            <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-            <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-            <th scope="col" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+            <th scope="col" style="width:60%">{{ __('messages.Topic') }}</th>
+            <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Repiles') }}</th>
+            <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Views') }}</th>
+            <th scope="col" class="postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -39,9 +43,9 @@
                   </div>
                 </div>
               </td>
-              <td>{{ $item->comment()->count() }}</td>
-              <td>{{ $item->postview()->count() }}</td>
-              <td style="text-align:right;">
+              <td style="text-align:right;">{{ $item->comment()->count() }}</td>
+              <td style="text-align:right;">{{ $item->postview()->count() }}</td>
+              <td style="text-align:right;" class="postdate">
                 @php
                 $cls_date = new DateTime($item->created_at);
                 $newdate = $cls_date->format('d-M-Y');

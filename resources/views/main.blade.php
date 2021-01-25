@@ -28,13 +28,11 @@
 <div class="container bg-white showpostmain decktopselect">
   <div class="row justify-content-center">
     @foreach ($rooms as $item)
-      <div class="col-md-3 col-sm-3 col-3 border-seilecroom">
-        <div class="selectroom">
-          <a href="/dashboard/{{$item->id}}">
-            <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
-            {{ $item->name }}
-          </a>
-        </div>
+      <div class="col-md-3 col-sm-3 col-3 border-seilecroom p-0">
+        <a href="/dashboard/{{$item->id}}" class="selectroom">
+          <img src="{{ asset('img/roomicon')}}/icon{{$item->id}}.svg" alt="">
+          <div class="text">{{ $item->name }}</div>
+        </a>
       </div>
     @endforeach
   </div>
@@ -67,15 +65,14 @@
             @endforeach
           </div>
         </div>
-       
         <div class="headtable">
           <table class="table">
             <thead>
               <tr>
-                <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-                <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-                <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-                <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+                <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+                <th scope="col" style="width:8% ;text-align:right">{{ __('messages.Repiles') }}</th>
+                <th scope="col" style="width:8% ;text-align:right;">{{ __('messages.Views') }}</th>
+                <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -89,9 +86,9 @@
                         </div>
                       </div>
                     </td>
-                    <td>{{ $general->comment()->count() }} </td>
-                    <td>{{ $general->postview()->count() }}</td>
-                    <td style="text-align:right;" class="pr-5">
+                    <td style="text-align:right;">{{ $general->comment()->count() }} </td>
+                    <td style="text-align:right;">{{ $general->postview()->count() }}</td>
+                    <td style="text-align:right;" class="pr-5 postdate">
                       @php
                       $cls_date = new DateTime($general->created_at);
                       $newdate = $cls_date->format('d-M-Y');
@@ -125,10 +122,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8% ; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8% ; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -142,9 +139,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $dtwallet->comment()->count() }} </td>
-                  <td>{{ $dtwallet->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $dtwallet->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $dtwallet->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($dtwallet->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -177,10 +174,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8% ; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8% ; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -194,9 +191,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $mbwallet->comment()->count() }} </td>
-                  <td>{{ $mbwallet->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $mbwallet->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $mbwallet->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($mbwallet->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -229,10 +226,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -246,9 +243,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $webwallet->comment()->count() }} </td>
-                  <td>{{ $webwallet->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $webwallet->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $webwallet->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($webwallet->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -281,10 +278,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -298,9 +295,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $smartcontract->comment()->count() }} </td>
-                  <td>{{ $smartcontract->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $smartcontract->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $smartcontract->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($smartcontract->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -333,10 +330,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -350,9 +347,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $dapp->comment()->count() }} </td>
-                  <td>{{ $dapp->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $dapp->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $dapp->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($dapp->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -385,10 +382,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -402,9 +399,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $oracle->comment()->count() }} </td>
-                  <td>{{ $oracle->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $oracle->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $oracle->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($oracle->created_at);
                     $newdate = $cls_date->format('d-M-Y');
@@ -437,10 +434,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="pl-5" style="width:65%">{{ __('messages.Topic') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Repiles') }}</th>
-              <th scope="col" style="width:10%">{{ __('messages.Views') }}</th>
-              <th scope="col" class="pr-5" style="width:15%; text-align:right;">{{ __('messages.Post Date') }}</th>
+              <th scope="col" class="pl-5" style="width:60%">{{ __('messages.Topic') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Repiles') }}</th>
+              <th scope="col" style="width:8%; text-align:right;">{{ __('messages.Views') }}</th>
+              <th scope="col" class="pr-5 postdate" style="width:19%; text-align:right;">{{ __('messages.Post Date') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -454,9 +451,9 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ $defi->comment()->count() }} </td>
-                  <td>{{ $defi->postview()->count() }}</td>
-                  <td style="text-align:right;" class="pr-5">
+                  <td style="text-align:right;">{{ $defi->comment()->count() }} </td>
+                  <td style="text-align:right;">{{ $defi->postview()->count() }}</td>
+                  <td style="text-align:right;" class="pr-5 postdate">
                     @php
                     $cls_date = new DateTime($defi->created_at);
                     $newdate = $cls_date->format('d-M-Y');
