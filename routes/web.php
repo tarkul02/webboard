@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeDashboardController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +37,7 @@ Route::group([
     Route::group([
         'middleware' => 'admin.auth',
     ], function () {
-        Route::get('/', function() {
-            return view('admin/home');
-        })->name('admin');
+        Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
     });
 });
 
