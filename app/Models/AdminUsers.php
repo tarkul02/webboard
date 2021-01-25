@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Posts;
-class User extends Authenticatable
+class AdminUsers extends Authenticatable
 {
     use HasFactory, Notifiable;
-    protected $table = 'users';
+    protected $table = 'admin_users';
     /**
      * The attributes that are mass assignable.
      *
@@ -37,12 +37,4 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    public function posts()
-    {
-        return $this->hasMany(Posts::class, 'post_id','id');
-    }
 }

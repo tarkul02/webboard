@@ -4,6 +4,7 @@
 
 return [
     'Login'=> 'Login',
+    'Admin Login'=> 'Admin Login',
     'Register'=> 'Register',
     'Topic'=> 'Topic',
     'Repiles'=> 'Repiles',
