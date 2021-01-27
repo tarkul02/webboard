@@ -4,7 +4,7 @@
 
 return [
     'Login'=> '登录',
-    'Admin Login'=> 'Admin Login',
+    'Admin Login'=> '管理員登入',
     'Register'=> '注册',
     'Topic'=> '主题',
     'Repiles'=> '回复',
@@ -19,9 +19,13 @@ return [
     'Password'=>'密码',
     'Confirm Password'=>'确认密码',
     'New Topic'=>'新主题',
+    'Create Room'=>'Create Room',
     'Title'=>'主题',
     'Message'=>'信息',
     'Create'=>'新建',
+    'Update'=>'更新資料',
+    'Update Comment'=>'更新評論',
+    'Update Post'=>' 更新帖子',
     'Cancel'=>'取消',
     'Create Name'=>'新建名',
     'Create Title'=>'新建主题',
@@ -30,8 +34,9 @@ return [
     'Create Comment'=>'新建评论',
     'NEW POST' => '新发布',
     'Medium' => '中',
-    'Select Forum' => '選擇論壇',
     'View ALL' => '查看全部',
     'Hot Forum' => '熱門論壇',
-    ' General' => ' General'
+    'Select Forum' => '選擇論壇',
+    'Select Room' => '選擇房間',
+    'Select Type' => '選擇類型',
 ];

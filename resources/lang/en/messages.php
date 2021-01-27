@@ -23,6 +23,9 @@ return [
     'Title'=>'Title',
     'Message'=>'Message',
     'Create'=>'Create',
+    'Update'=>'Update',
+    'Update Comment'=>'Update Comment',
+    'Update Post'=>' Update Post',
     'Cancel'=>'Cancel',
     'Create Name'=>'Create Name',
     'Create Title'=>'Create Title',
@@ -31,8 +34,9 @@ return [
     'Create Comment'=>'Create Comment',
     'NEW POST' => 'NEW POST',
     'Medium' => 'Medium',
-    'Select Forum' => 'Select Forum',
     'View ALL' => 'View ALL',
     'Hot Forum' => 'Hot Forum',
-    ' General' => ' General'
+    'Select Forum' => 'Select Forum',
+    'Select Room' => 'Select Room',
+    'Select Type' => 'Select Type',
 ];

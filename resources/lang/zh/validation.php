@@ -134,8 +134,8 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-        'email' => 'The email has already been taken.',
-        'password' => 'The password confirmation does not match. and the password must be at least 8 characters. ',
+        'email' => '該電子郵件已被接收。',
+        'password' => '密碼確認不匹配。 密碼必須至少為8個字符。 ',
     ],
 
     /*

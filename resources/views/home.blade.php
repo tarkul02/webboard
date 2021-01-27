@@ -71,28 +71,28 @@
               </div>
               <div class="modal-body">
                   <select class="form-control form-control-lg" style="font-size: 13px;" name="selectroom" id="selectroom">
-                    <option>Select Room</option>
+                    <option>{{ __('messages.Select Room') }}</option>
                     @foreach ($rooms as $item)
                       <option>{{$item->id}} {{$item->name}}</option>
                     @endforeach
                   </select>
                   <select class="form-control form-control-lg mt-2" style="font-size: 13px;" name="selecttype" id="selecttype">
-                    <option>Select Type</option>
+                    <option>{{ __('messages.Select Type') }}</option>
                     @foreach ($types as $item)
                       <option>{{$item->id}} {{$item->name}}</option>
                     @endforeach
                   </select>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">{{ __('messages.Name') }}:</label>
-                    <input type="text" class="form-control" name="name" placeholder="Create Name" required="" oninvalid="this.setCustomValidity('Please Enter Name')">
+                    <input type="text" class="form-control" name="name" placeholder="{{ __('messages.Create Name') }}" required="" oninvalid="this.setCustomValidity('Please Enter Name')">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">{{ __('messages.Title') }}:</label>
-                    <input type="text" class="form-control" name="title" placeholder="Create Title" required="" oninvalid="this.setCustomValidity('Please Enter Title.')">
+                    <input type="text" class="form-control" name="title" placeholder="{{ __('messages.Create Title') }}" required="" oninvalid="this.setCustomValidity('Please Enter Title.')">
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">{{ __('messages.Message') }}:</label>
-                    <textarea class="form-control" name="detail" placeholder="Create Detail" required="" oninvalid="this.setCustomValidity('Please Enter Detail')"></textarea>
+                    <textarea class="form-control" name="detail" placeholder="{{ __('messages.Create Detail') }}" required="" oninvalid="this.setCustomValidity('Please Enter Detail')"></textarea>
                   </div>
               </div>
               <div class="modal-footer">
@@ -109,7 +109,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update post</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('messages.Update post') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
-                    <button type="submit" class="btn btn-createpost">Update</button>
+                    <button type="submit" class="btn btn-createpost">{{ __('messages.Update') }}</button>
                 </div>
                 </div>
             </div>

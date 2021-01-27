@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title' , 'ECOCForum')
 @section('content')
-<div class="container selectroomhead">Select Forum</div>
+<div class="container "><div class="selectroomhead"> {{ __('messages.Select Forum') }}</div></div>
 <div class="container">
     <div class="container bg-white showpostmain">
         <div class="row justify-content-center">
@@ -16,7 +16,7 @@
             </div>
           @endforeach
         </div>
-      </div>
+    </div>
 </div>
 <div class="container">
     <div class="row justify-content-center mb-5 ">
@@ -90,7 +90,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <textarea class="form-control" name="comment" placeholder="Create Comment" required></textarea>
+                    <textarea class="form-control" name="comment" placeholder="{{ __('messages.Create Comment') }}" required></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -108,7 +108,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('messages.New Comment') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('messages.Update Comment') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
-                    <button type="submit" class="btn btn-createpost">Update</button>
+                    <button type="submit" class="btn btn-createpost">{{ __('messages.Update') }}</button>
                 </div>
                 </div>
             </div>
