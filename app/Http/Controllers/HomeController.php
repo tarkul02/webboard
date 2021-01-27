@@ -78,7 +78,7 @@ class HomeController extends Controller
     {
         $data = $request->all();
         $success = 'success';
-        DB::table('Comment')->where('id', $data['id'])->delete();
+        DB::table('Posts')->where('id', $data['id'])->delete();
         return response()->json(['success' => $success]);
     }
 }

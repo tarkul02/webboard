@@ -133,7 +133,7 @@
                 <tr>
                   <td class="pl-5">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$dtwallet->id}}">{{ $dtwallet->name }}</a></div>
+                      <div class="forum_name"><a href="/post/{{$dtwallet->id}}">{{ $dtwallet->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($dtwallet->title,0,120) }} 
                       </div>
@@ -185,7 +185,7 @@
                 <tr>
                   <td class="pl-5">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$mbwallet->id}}">{{ $mbwallet->name }}</a></div>
+                      <div class="forum_name"><a href="/post/{{$mbwallet->id}}">{{ $mbwallet->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($mbwallet->title,0,120) }} 
                       </div>
@@ -237,7 +237,7 @@
                 <tr>
                   <td class="pl-5">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$webwallet->id}}">{{ $webwallet->name }}</a></div>
+                      <div class="forum_name"><a href="/post/{{$webwallet->id}}">{{ $webwallet->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($webwallet->title,0,120) }} 
                       </div>
@@ -289,7 +289,7 @@
                 <tr>
                   <td class="pl-5">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$smartcontract->id}}">{{ $smartcontract->name }}</a></div>
+                      <div class="forum_name"><a href="/post{{$smartcontract->id}}">{{ $smartcontract->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($smartcontract->title,0,120) }} 
                       </div>
@@ -341,7 +341,7 @@
                 <tr>
                   <td class="pl-55">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$dapp->id}}">{{ $dapp->name }}</a></div>
+                      <div class="forum_name"><a href="/post/{{$dapp->id}}">{{ $dapp->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($dapp->title,0,120) }} 
                       </div>
@@ -393,7 +393,7 @@
                 <tr>
                   <td class="pl-5">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$oracle->id}}">{{ $oracle->name }}</a></div>
+                      <div class="forum_name"><a href="/post/{{$oracle->id}}">{{ $oracle->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($oracle->title,0,120) }} 
                       </div>
@@ -445,7 +445,7 @@
                 <tr>
                   <td class="pl-5">
                     <div class="">
-                      <div class="forum_name"><a href="/{{$defi->id}}">{{ $defi->name }}</a></div>
+                      <div class="forum_name"><a href="/post/{{$defi->id}}">{{ $defi->name }}</a></div>
                       <div class="forum_sub_title">
                         {{ substr($defi->title,0,120) }} 
                       </div>

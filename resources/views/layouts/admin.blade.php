@@ -3,28 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Admin | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="adminLTE/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
   <!-- iCheck -->
-  <link rel="stylesheet" href="adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="adminLTE/plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/jqvmap/jqvmap.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="adminLTE/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css') }}">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="adminLTE/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
-  <link rel="stylesheet" href="adminLTE/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/summernote/summernote-bs4.min.css') }}">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -59,7 +63,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="{{ asset('img/logo.svg') }}" alt="">
     </a>
 
@@ -67,44 +71,36 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="menu">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
+          <li class="nav-item menu-open" id="post">
+            <a href="{{ route('admin') }}" class="nav-link {{ $active == 'post' ? 'active' : 'noactive'}}">
               <i class="nav-icon  far fa-sticky-note"></i>
               <p>
                 Post
               </p>
             </a>
-          </li>
+          </li> 
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.comment') }}" class="nav-link {{ $active == 'comment' ? 'active' : 'noactive'}}">
               <i class="nav-icon far fa-comment"></i>
               <p>
                 Comment
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open" id="room">
+            <a href="{{ route('admin.room') }}" class="nav-link {{ $active == 'room' ? 'active' : 'noactive'}}">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Room
               </p>
             </a>
           </li> 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
+          <li class="nav-item menu-open" id="type">
+            <a href="{{ route('admin.type') }}" class="nav-link {{ $active == 'type' ? 'active' : 'noactive'}}">
               <i class="nav-icon fas fa-bookmark"></i>
               <p>
                 Type
@@ -117,7 +113,11 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
+  <div class="content-wrapper p-4">
+    <main>
+        @yield('content')
+    </main>
+  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     Dashboard Forum
@@ -135,33 +135,47 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="adminLTE/plugins/jquery/jquery.min.js"></script>
+@yield('javascript')
+
+<script src="{{ asset('adminLTE/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="adminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
-<script src="adminLTE/plugins/chart.js/Chart.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/chart.js/Chart.min.js')}}"></script>
 
 <!-- jQuery Knob Chart -->
-<script src="adminLTE/plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->
-<script src="adminLTE/plugins/moment/moment.min.js"></script>
-<script src="adminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="{{ asset('adminLTE/plugins/moment/moment.min.js')}}"></script>
+<script src="{{ asset('adminLTE/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="adminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Summernote -->
-<script src="adminLTE/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
-<script src="adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{ asset('adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="adminLTE/dist/js/adminlte.js"></script>
+<script src="{{ asset('adminLTE/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="adminLTE/dist/js/demo.js"></script>
+<script src="{{ asset('adminLTE/dist/js/demo.js')}}"></script>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.nav-item li a').click(function(e) {
+
+      $('.navbar-nav li a.active').removeClass('active');
+
+      var $parent = $(this).parent();
+      $parent.addClass('active');
+      e.preventDefault();
+    });
+  });
+</script>
 </body>
 </html>

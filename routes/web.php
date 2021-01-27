@@ -5,8 +5,14 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeDashboardController;
+use App\Http\Controllers\ShowdetailController;
 use App\Http\Controllers\Auth\AdminLoginController;
+
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\PostHomeController;
+use App\Http\Controllers\Admin\CommentHomeController;
+use App\Http\Controllers\Admin\RoomHomeController;
+use App\Http\Controllers\Admin\TypeHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,19 +44,35 @@ Route::group([
         'middleware' => 'admin.auth',
     ], function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
+        Route::post('/admineditpost', [PostHomeController::class, 'editpost'])->name('admineditpost');
+        Route::post('/adminupdatepost', [PostHomeController::class, 'updatepost'])->name('adminupdatepost');
+        Route::post('/admindeletepost', [PostHomeController::class, 'deletepost'])->name('admindeletepost');
+
+        Route::get('/comment', [AdminHomeController::class, 'comment'])->name('admin.comment');
+        Route::post('/admineditcomment', [CommentHomeController::class, 'editcomment'])->name('admineditcomment');
+        Route::post('/adminupdatecomment', [CommentHomeController::class, 'updatecomment'])->name('adminupdatecomment');
+        Route::post('/admindeletecomment', [CommentHomeController::class, 'deletecomment'])->name('admindeletecomment');
+
+        Route::get('/room', [AdminHomeController::class, 'room'])->name('admin.room');
+        Route::post('/admineditroom', [RoomHomeController::class, 'editroom'])->name('admineditroom');
+        Route::post('/adminupdateroom', [RoomHomeController::class, 'updateroom'])->name('adminupdateroom');
+        Route::post('/admindeleteroom', [RoomHomeController::class, 'deleteroom'])->name('admindeleteroom');
+        Route::post('/createroom', [RoomHomeController::class, 'createroom'])->name('createroom');
+
+        Route::get('/type', [AdminHomeController::class, 'type'])->name('admin.type');
+        Route::post('/adminedittype', [TypeHomeController::class, 'edittype'])->name('adminedittype');
+        Route::post('/adminupdatetype', [TypeHomeController::class, 'updatetype'])->name('adminupdatetype');
+        Route::post('/admindeletetype', [TypeHomeController::class, 'deletetype'])->name('admindeletetype');
+        Route::post('/createtype', [TypeHomeController::class, 'createtype'])->name('createtype');
     });
 });
-
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/post/{id}', [App\Http\Controllers\ShowdetailController::class, 'index'])->name('detail');
 
 Route::group([
     'prefix' => 'post'
 ], function () {
     Route::post('/', [App\Http\Controllers\HomeController::class, 'createpost'])->name('createpost');
-
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/{id}', [ShowdetailController::class, 'index'])->name('detail');
     Route::group([
         'middleware' => 'auth',
     ], function () {

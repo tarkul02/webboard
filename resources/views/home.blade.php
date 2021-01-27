@@ -70,13 +70,13 @@
                 </button>
               </div>
               <div class="modal-body">
-                  <select class="form-control form-control-lg" name="selectroom" id="selectroom">
+                  <select class="form-control form-control-lg" style="font-size: 13px;" name="selectroom" id="selectroom">
                     <option>Select Room</option>
                     @foreach ($rooms as $item)
                       <option>{{$item->id}} {{$item->name}}</option>
                     @endforeach
                   </select>
-                  <select class="form-control form-control-lg mt-2" name="selecttype" id="selecttype">
+                  <select class="form-control form-control-lg mt-2" style="font-size: 13px;" name="selecttype" id="selecttype">
                     <option>Select Type</option>
                     @foreach ($types as $item)
                       <option>{{$item->id}} {{$item->name}}</option>
@@ -103,42 +103,42 @@
           </div>
         </div>
     </form>
-    <form action="{{url('/updatepost')}}" method="post">
+    <form action="{{url('/post/updatepost')}}" method="post">
       @csrf
-      <div class="modal fade" id="updatepost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Update post</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="idpost" name="idpost" style="display: none">
+        <div class="modal fade" id="updatepost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">{{ __('messages.Name') }}:</label>
-                  <input type="text" class="form-control" id="namepost" name="namepost" >
+                <div class="modal-body">
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="idpost" name="idpost" style="display: none">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">{{ __('messages.Name') }}:</label>
+                    <input type="text" class="form-control" id="namepost" name="namepost" >
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">{{ __('messages.Title') }}:</label>
+                    <input type="text" class="form-control" id="titlepost" name="titlepost" >
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">{{ __('messages.Message') }}:</label>
+                      <textarea class="form-control" id="detailpost" name="detailpost"></textarea>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">{{ __('messages.Title') }}:</label>
-                  <input type="text" class="form-control" id="titlepost" name="titlepost" >
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
+                    <button type="submit" class="btn btn-createpost">Update</button>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">{{ __('messages.Message') }}:</label>
-                    <textarea class="form-control" id="detailpost" name="detailpost"></textarea>
                 </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
-                  <button type="submit" class="btn btn-createpost">Update</button>
-              </div>
-              </div>
-          </div>
-      </div>
-  </form>
+            </div>
+        </div>
+    </form>
 </div>
 @endsection
 @section('javascript')

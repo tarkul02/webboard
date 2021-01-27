@@ -19,6 +19,7 @@ return [
     'Password'=>'Password',
     'Confirm Password'=>'Confirm Password',
     'New Topic'=>'New Topic',
+    'Create Room'=>'Create Room',
     'Title'=>'Title',
     'Message'=>'Message',
     'Create'=>'Create',
