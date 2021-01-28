@@ -26,18 +26,19 @@ class DashboardController extends Controller
     {
     
         $rooms = Rooms::All();
-        $generals = Posts::where('rooms_id', 1)->take(2)->orderBy('id', 'DESC')->get();
-        $dtwallets = Posts::where('rooms_id', 2)->take(2)->orderBy('id', 'DESC')->get();
-        $mbwallets = Posts::where('rooms_id', 3)->take(2)->orderBy('id', 'DESC')->get();
-        $webwallets = Posts::where('rooms_id', 4)->take(2)->orderBy('id', 'DESC')->get();
-        $smartcontracts = Posts::where('rooms_id', 5)->take(2)->orderBy('id', 'DESC')->get();
-        $dapps = Posts::where('rooms_id', 6)->take(2)->orderBy('id', 'DESC')->get();
-        $oracles = Posts::where('rooms_id', 7)->take(2)->orderBy('id', 'DESC')->get();
-        $defis = Posts::where('rooms_id', 8)->take(2)->orderBy('id', 'DESC')->get();
+        $posts = Posts::All();
+        $generals = Posts::where('rooms_id', 1)->take(3)->orderBy('id', 'DESC')->get();
+        $dtwallets = Posts::where('rooms_id', 2)->take(3)->orderBy('id', 'DESC')->get();
+        $mbwallets = Posts::where('rooms_id', 3)->take(3)->orderBy('id', 'DESC')->get();
+        $webwallets = Posts::where('rooms_id', 4)->take(3)->orderBy('id', 'DESC')->get();
+        $smartcontracts = Posts::where('rooms_id', 5)->take(3)->orderBy('id', 'DESC')->get();
+        $dapps = Posts::where('rooms_id', 6)->take(3)->orderBy('id', 'DESC')->get();
+        $oracles = Posts::where('rooms_id', 7)->take(3)->orderBy('id', 'DESC')->get();
+        $defis = Posts::where('rooms_id', 8)->take(3)->orderBy('id', 'DESC')->get();
         // dd($posts[0]->comment()->count());
         $response = Http::get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ECOChain_EN');
         $response = $response->json();
-        return view('main', compact('rooms','generals','dtwallets','mbwallets','webwallets','webwallets','smartcontracts','dapps','oracles','defis','response'));
+        return view('main', compact('rooms','generals','dtwallets','mbwallets','webwallets','webwallets','smartcontracts','dapps','oracles','defis','response','posts'));
     }
 
     /**

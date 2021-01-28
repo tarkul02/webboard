@@ -39,4 +39,11 @@ return [
     'Select Forum' => 'Select Forum',
     'Select Room' => 'Select Room',
     'Select Type' => 'Select Type',
+    'delete post' => 'Once deleted, you will not be able to recover this post !',
+    'delete comment' => 'Once deleted, you will not be able to recover this comment !',
+    'Are you sure' =>'Are you sure?',
+    'Yes' =>'Yes',
+    'No' =>'No',
+    'This comment'=>'This comment has been deleted!',
+    'Deleted'=>'Deleted!'
 ];

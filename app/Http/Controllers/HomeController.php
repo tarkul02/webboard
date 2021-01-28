@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index() 
     {
     
-        $posts = Posts::paginate(20);
+        $posts = Posts::paginate();
         $rooms = Rooms::All();
         $types = Types::All();
         // dd($posts[0]->postview()->count());

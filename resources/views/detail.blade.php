@@ -133,77 +133,78 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript">
-        
-        $( document ).ready(function() {
-
-            $(".viewcomment").click(function() {
-                $('#updatecomment').modal();
-                var id = this.id;
-                var url = '<?php echo route("selectupdatecomment") ?>'    
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type:'POST',
-                    url:url,
-                    data:{id:id},
-                    success:function(data){
-                       $('#commentid').val(data.id);
-                       $('#updatedetail').val(data.detail);
-                    }
-                });
-            });
-
-            
-            $(".deletecomment").click(function() {
-                var id = this.id;
-                var url = '<?php echo route("deletecomment") ?>'
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this comment !",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            type:'POST',
-                            url:url,
-                            data:{id:id},
-                            success:function(data){
-                                swal("This comment has been deleted!", {
-                                    icon: "success",
-                                    timer: 3000,
-                                }).then(function () {
-                                    location.reload();
-                                });;
-                            }
-                        });
-                    }
-                });
-            });
-
-        });
-
-        function commentpost() {
-
-            if("{{Auth::check()}}" == false){
-                window.location.href = "{{route('login')}}";
-            }else{
-                $('#exampleModal').modal();
+<script type="text/javascript">
+$( document ).ready(function() {
+    $(".viewcomment").click(function() {
+        $('#updatecomment').modal();
+        var id = this.id;
+        var url = '<?php echo route("selectupdatecomment") ?>'    
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'POST',
+            url:url,
+            data:{id:id},
+            success:function(data){
+                $('#commentid').val(data.id);
+                $('#updatedetail').val(data.detail);
             }
+        });
+    });
 
+    $(".deletecomment").click(function() {
+      var id = this.id;
+      var url = '<?php echo route("deletecomment") ?>'
+      Swal.fire({
+        title: "{{ trans('messages.Are you sure') }}",
+        text: "{{ trans('messages.delete post') }}",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: "{{ trans('messages.No') }}",
+        confirmButtonText: "{{ trans('messages.Yes') }}",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              type:'POST',
+              url:url,
+              data:{id:id},
+              success:function(data){
+                Swal.fire({
+                  title: "{{ trans('messages.Deleted') }}",
+                  text: "{{ trans('messages.This comment') }}",
+                  type: "success",
+                  timer: 2000
+                  }).then(function () {
+                      location.reload();
+                  });
+              }
+          });
         }
-    </script>
+      });
+    });
+});
 
-    {{-- <script type="text/javascript">
-        $(document).ready(()=>{
-            CKEDITOR.replace( 'summary-ckeditor' );
-        })
-    </script> --}}
+function commentpost() {
+
+    if("{{Auth::check()}}" == false){
+        window.location.href = "{{route('login')}}";
+    }else{
+        $('#exampleModal').modal();
+    }
+
+}
+</script>
+
+{{-- <script type="text/javascript">
+$(document).ready(()=>{
+    CKEDITOR.replace( 'summary-ckeditor' );
+})
+</script> --}}
 @endsection

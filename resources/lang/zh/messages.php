@@ -39,4 +39,11 @@ return [
     'Select Forum' => '選擇論壇',
     'Select Room' => '選擇房間',
     'Select Type' => '選擇類型',
+    'delete post' => '刪除後，您將無法恢復該帖子！',
+    'delete comment' => '刪除後，您將無法恢復此評論！',
+    'Are you sure' =>'你確定嗎？',
+    'Yes' =>'是',
+    'No' =>'沒有',
+    'This comment'=>'該評論已被刪除！',
+    'Deleted'=>'已刪除'
 ];

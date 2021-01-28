@@ -74,8 +74,8 @@
                 </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
-                    <button type="submit" class="btn btn-createpost">Update</button>
+                    <button type="button" class="btn  btn-danger btn-cencelpost" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-createpost">Update</button>
                 </div>
                 </div>
             </div>
@@ -107,8 +107,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cencelpost" data-dismiss="modal">{{ __('messages.Cancel') }}</button>
-                <button type="submit" class="btn btn-createpost">{{ __('messages.Create') }}</button>
+                <button type="button" class="btn  btn-danger btn-cencelpost" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success btn-createpost">Update</button>
             </div>
             </div>
         </div>
@@ -131,7 +131,6 @@
                 url:url,
                 data:{id:id},
                 success:function(data){
-                    console.log(data);
                     $('#id').val(data.id);
                     $('#name').val(data.name);
                     $('#decision').val(data.decision); 
@@ -141,18 +140,20 @@
 
         $(".deleteadmin").click(function() {
             var id = this.id;
-            console.log(id);
             var url = '<?php echo route("admindeleteroom") ?>'
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this post !",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+            Swal.fire({
+                Swtitle: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this room !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: "{{ trans('messages.No') }}",
+                confirmButtonText: "{{ trans('messages.Yes') }}",
             })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
+            .then((result) => {
+                if (result.isConfirmed) {
+                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -160,13 +161,15 @@
                         url:url,
                         data:{id:id},
                         success:function(data){
-                            console.log(data);
-                            swal("This comment has been deleted!", {
-                                icon: "success",
-                                timer: 3000,
-                            }).then(function () {
+                            Swal.fire({
+                            title: "Deleted!",
+                            text: "This comment has been deleted!",
+                            type: "success",
+                            timer: 2000
+                            })
+                            .then(function () {
                                 location.reload();
-                            });;
+                            });
                         }
                     });
                 }

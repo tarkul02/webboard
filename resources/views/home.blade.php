@@ -56,7 +56,9 @@
           @endforeach
         </tbody>
       </table>
-      {{ $posts->links()}}
+      <div class="mt-2" style="float: right;">
+        {{ $posts->links('pagination')}}
+      </div>
     </div>
     <form action="{{url('/post')}}" method="post">
       @csrf
@@ -157,7 +159,6 @@
             url:url,
             data:{id:id},
             success:function(data){
-                console.log(data);
                 $('#idpost').val(data.id);
                 $('#namepost').val(data.name);
                 $('#titlepost').val(data.title);
@@ -170,32 +171,37 @@
     $(".deletepost").click(function() {
       var id = this.id;
       var url = '<?php echo route("deletepost") ?>'
-      swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this post !",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
+      Swal.fire({
+        title: "{{ trans('messages.Are you sure') }}",
+        text: "{{ trans('messages.delete post') }}",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: "{{ trans('messages.No') }}",
+        confirmButtonText: "{{ trans('messages.Yes') }}",
       })
-      .then((willDelete) => {
-          if (willDelete) {
-              $.ajax({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  },
-                  type:'POST',
-                  url:url,
-                  data:{id:id},
-                  success:function(data){
-                      swal("This comment has been deleted!", {
-                          icon: "success",
-                          timer: 3000,
-                      }).then(function () {
-                          location.reload();
-                      });;
-                  }
-              });
-          }
+      .then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              type:'POST',
+              url:url,
+              data:{id:id},
+              success:function(data){
+                Swal.fire({
+                  title: "{{ trans('messages.Deleted') }}",
+                  text: "{{ trans('messages.This comment') }}",
+                  type: "success",
+                  // timer: 2000
+                  }).then(function () {
+                      location.reload();
+                  });
+              }
+          });
+        }
       });
     });
   });

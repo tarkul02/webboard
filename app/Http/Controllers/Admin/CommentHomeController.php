@@ -12,8 +12,8 @@ class CommentHomeController extends Controller
     public function editcomment(Request $request)
     {
         $data = $request->all();
-        $posts = Comment::where('id', $data['id'])->first();
-        return response()->json($posts);
+        $comment = Comment::where('id', $data['id'])->first();
+        return response()->json($comment);
     }
 
     public function updatecomment(Request $request)

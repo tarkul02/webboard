@@ -378,6 +378,26 @@ td {
     text-decoration: underline;
 }
 
+.editadmin,
+.deleteadmin {
+    cursor: pointer;
+}
+
+.my-active span {
+    color: #ffffff !important;
+    background-color: #6E27B1 !important;
+    padding: 5px 10px;
+}
+
+.pager li {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.notshow {
+    display: none;
+}
+
 .showpostmain {
     box-shadow: 0px 3px 10px #0000002b;
     margin-bottom: 30px;

@@ -33,7 +33,7 @@ class HomeDashboardController extends Controller
         $roomtitle = Rooms::where('id', $id)->get();
         $types = Types::All();
         $rooms = Rooms::All();
-        $posts = Posts::where('rooms_id', $id)->paginate(2);
+        $posts = Posts::where('rooms_id', $id)->paginate(15);
         return view('/home', compact('posts','rooms','types','roomtitle'));
     }
 

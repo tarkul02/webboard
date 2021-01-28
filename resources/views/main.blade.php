@@ -52,8 +52,8 @@
     </div>
   </div>
 </div>
-<div class="container selectroomhead mt-4"> {{ __('messages.Hot Forum') }}</div>
-<div class="container bg-white showpostmain">
+<div class="container selectroomhead mt-4 {{ count($posts) != 0 ? 'show' : "notshow" }}"> {{ __('messages.Hot Forum') }}</div>
+<div class="container bg-white showpostmain {{ count($generals) != 0 ? 'show' : "notshow" }}">
     <div class="row justify-content-center">
         <div class="col-md-12 head_loom">
           <div class="headtext">
@@ -106,7 +106,7 @@
     </div>
 </div>
 {{-- dtwallets --}}
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain {{ count($dtwallets) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
@@ -158,7 +158,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain {{ count($mbwallets) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
@@ -210,7 +210,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain {{ count($webwallets) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
@@ -262,7 +262,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain {{ count($smartcontracts) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
@@ -314,7 +314,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain c">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
@@ -366,7 +366,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain {{ count($oracles) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
@@ -418,7 +418,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain">
+<div class="container bg-white showpostmain {{ count($defis) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
