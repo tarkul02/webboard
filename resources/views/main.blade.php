@@ -314,7 +314,7 @@
       </div>
   </div>
 </div>
-<div class="container bg-white showpostmain c">
+<div class="container bg-white showpostmain  {{ count($smartcontracts) != 0 ? 'show' : "notshow" }}">
   <div class="row justify-content-center">
       <div class="col-md-12 head_loom">
         <div class="headtext">
